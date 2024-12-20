@@ -1,0 +1,37 @@
+# 忽略编译输出文件夹
+bin/
+obj/
+
+# Visual Studio 生成的文件夹
+.vs/
+*.user
+*.suo
+*.dbmdl
+
+# 临时文件
+[Tt]emp/
+[Ll]og/
+*.log
+
+# NuGet 包缓存
+*.nupkg
+project.lock.json
+packages/
+artifacts/
+
+# 编译生成文件
+*.dll
+*.exe
+*.pdb
+*.cache
+*.config
+*.manifest
+
+# 其他不必要的文件
+*.ide/
+*.DS_Store
+*.bak
+*.resx
+
+# Rider 配置文件
+.idea/
