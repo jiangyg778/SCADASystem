@@ -28,10 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            SuspendLayout();
+            // 
+            // Footer
+            // 
+            Footer.Location = new Point(195, 664);
+            Footer.Size = new Size(1085, 56);
+            // 
+            // Aside
+            // 
+            Aside.Location = new Point(0, 115);
+            Aside.Size = new Size(195, 605);
+            // 
+            // Header
+            // 
+            Header.Location = new Point(0, 0);
+            Header.Size = new Size(1280, 115);
+            // 
+            // FrmMain
+            // 
+            AllowShowTitle = false;
+            AutoScaleMode = AutoScaleMode.None;
+            ClientSize = new Size(1280, 720);
+            Name = "FrmMain";
+            Padding = new Padding(0);
+            ShowTitle = false;
+            Text = "Form1";
+            ZoomScaleRect = new Rectangle(15, 15, 800, 450);
+            ResumeLayout(false);
         }
 
         #endregion
