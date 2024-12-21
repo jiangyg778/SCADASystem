@@ -42,6 +42,16 @@
             lbl_Time = new Sunny.UI.UILabel();
             lbl_Min = new Sunny.UI.UISymbolLabel();
             lbl_Exit = new Sunny.UI.UISymbolLabel();
+            uiLabel1 = new Sunny.UI.UILabel();
+            lbl_ProducteCount = new Sunny.UI.UILedLabel();
+            uiLabel2 = new Sunny.UI.UILabel();
+            lbl_BadCount = new Sunny.UI.UILedLabel();
+            uiLabel3 = new Sunny.UI.UILabel();
+            lbl_Beat = new Sunny.UI.UILedLabel();
+            uiLabel5 = new Sunny.UI.UILabel();
+            lbl_TotalAlarm = new Sunny.UI.UILedLabel();
+            uiLabel7 = new Sunny.UI.UILabel();
+            led_ProducteState = new Sunny.UI.UILedBulb();
             Header.SuspendLayout();
             uiPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -60,6 +70,16 @@
             // 
             // Header
             // 
+            Header.Controls.Add(led_ProducteState);
+            Header.Controls.Add(uiLabel7);
+            Header.Controls.Add(lbl_TotalAlarm);
+            Header.Controls.Add(uiLabel5);
+            Header.Controls.Add(lbl_Beat);
+            Header.Controls.Add(uiLabel3);
+            Header.Controls.Add(lbl_BadCount);
+            Header.Controls.Add(uiLabel2);
+            Header.Controls.Add(lbl_ProducteCount);
+            Header.Controls.Add(uiLabel1);
             Header.Controls.Add(uiPanel1);
             Header.Location = new Point(0, 0);
             Header.Size = new Size(1280, 115);
@@ -239,6 +259,133 @@
             lbl_Exit.SymbolSize = 45;
             lbl_Exit.TabIndex = 3;
             // 
+            // uiLabel1
+            // 
+            uiLabel1.BackColor = Color.Transparent;
+            uiLabel1.Font = new Font("宋体", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel1.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel1.Image = Properties.Resources.产量;
+            uiLabel1.ImageAlign = ContentAlignment.MiddleLeft;
+            uiLabel1.Location = new Point(4, 70);
+            uiLabel1.Name = "uiLabel1";
+            uiLabel1.Size = new Size(134, 32);
+            uiLabel1.TabIndex = 1;
+            uiLabel1.Text = "生产计数";
+            uiLabel1.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lbl_ProducteCount
+            // 
+            lbl_ProducteCount.BackColor = Color.Transparent;
+            lbl_ProducteCount.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_ProducteCount.ForeColor = Color.DeepSkyBlue;
+            lbl_ProducteCount.Location = new Point(138, 69);
+            lbl_ProducteCount.MinimumSize = new Size(1, 1);
+            lbl_ProducteCount.Name = "lbl_ProducteCount";
+            lbl_ProducteCount.Size = new Size(107, 35);
+            lbl_ProducteCount.TabIndex = 2;
+            lbl_ProducteCount.Text = "5000";
+            // 
+            // uiLabel2
+            // 
+            uiLabel2.BackColor = Color.Transparent;
+            uiLabel2.Font = new Font("宋体", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel2.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel2.Image = Properties.Resources.产量;
+            uiLabel2.ImageAlign = ContentAlignment.MiddleLeft;
+            uiLabel2.Location = new Point(245, 70);
+            uiLabel2.Name = "uiLabel2";
+            uiLabel2.Size = new Size(134, 32);
+            uiLabel2.TabIndex = 1;
+            uiLabel2.Text = "不良计数";
+            uiLabel2.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lbl_BadCount
+            // 
+            lbl_BadCount.BackColor = Color.Transparent;
+            lbl_BadCount.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_BadCount.ForeColor = Color.DeepSkyBlue;
+            lbl_BadCount.Location = new Point(376, 69);
+            lbl_BadCount.MinimumSize = new Size(1, 1);
+            lbl_BadCount.Name = "lbl_BadCount";
+            lbl_BadCount.Size = new Size(93, 35);
+            lbl_BadCount.TabIndex = 2;
+            lbl_BadCount.Text = "5000";
+            // 
+            // uiLabel3
+            // 
+            uiLabel3.BackColor = Color.Transparent;
+            uiLabel3.Font = new Font("宋体", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel3.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel3.Image = Properties.Resources.生产节拍;
+            uiLabel3.ImageAlign = ContentAlignment.MiddleLeft;
+            uiLabel3.Location = new Point(469, 72);
+            uiLabel3.Name = "uiLabel3";
+            uiLabel3.Size = new Size(129, 32);
+            uiLabel3.TabIndex = 1;
+            uiLabel3.Text = "生产节拍";
+            uiLabel3.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lbl_Beat
+            // 
+            lbl_Beat.BackColor = Color.Transparent;
+            lbl_Beat.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Beat.ForeColor = Color.DeepSkyBlue;
+            lbl_Beat.Location = new Point(598, 71);
+            lbl_Beat.MinimumSize = new Size(1, 1);
+            lbl_Beat.Name = "lbl_Beat";
+            lbl_Beat.Size = new Size(93, 35);
+            lbl_Beat.TabIndex = 2;
+            lbl_Beat.Text = "60 S";
+            // 
+            // uiLabel5
+            // 
+            uiLabel5.BackColor = Color.Transparent;
+            uiLabel5.Font = new Font("宋体", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel5.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel5.Image = Properties.Resources.报警数;
+            uiLabel5.ImageAlign = ContentAlignment.MiddleLeft;
+            uiLabel5.Location = new Point(691, 72);
+            uiLabel5.Name = "uiLabel5";
+            uiLabel5.Size = new Size(129, 32);
+            uiLabel5.TabIndex = 1;
+            uiLabel5.Text = "累计报警";
+            uiLabel5.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lbl_TotalAlarm
+            // 
+            lbl_TotalAlarm.BackColor = Color.Transparent;
+            lbl_TotalAlarm.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_TotalAlarm.ForeColor = Color.DeepSkyBlue;
+            lbl_TotalAlarm.Location = new Point(820, 71);
+            lbl_TotalAlarm.MinimumSize = new Size(1, 1);
+            lbl_TotalAlarm.Name = "lbl_TotalAlarm";
+            lbl_TotalAlarm.Size = new Size(93, 35);
+            lbl_TotalAlarm.TabIndex = 2;
+            lbl_TotalAlarm.Text = "5000";
+            // 
+            // uiLabel7
+            // 
+            uiLabel7.BackColor = Color.Transparent;
+            uiLabel7.Font = new Font("宋体", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel7.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel7.Image = Properties.Resources.系统状态;
+            uiLabel7.ImageAlign = ContentAlignment.MiddleLeft;
+            uiLabel7.Location = new Point(913, 72);
+            uiLabel7.Name = "uiLabel7";
+            uiLabel7.Size = new Size(129, 32);
+            uiLabel7.TabIndex = 1;
+            uiLabel7.Text = "系统状态";
+            uiLabel7.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // led_ProducteState
+            // 
+            led_ProducteState.BackColor = Color.Transparent;
+            led_ProducteState.Location = new Point(1042, 71);
+            led_ProducteState.Name = "led_ProducteState";
+            led_ProducteState.Size = new Size(32, 32);
+            led_ProducteState.TabIndex = 3;
+            led_ProducteState.Text = "uiLedBulb1";
+            // 
             // FrmMain
             // 
             AllowShowTitle = false;
@@ -272,5 +419,15 @@
         private Sunny.UI.UISymbolLabel lbl_Min;
         private Sunny.UI.UILabel lbl_Time;
         private Sunny.UI.UISymbolLabel lbl_Exit;
+        private Sunny.UI.UILabel uiLabel7;
+        private Sunny.UI.UILedLabel lbl_TotalAlarm;
+        private Sunny.UI.UILabel uiLabel5;
+        private Sunny.UI.UILedLabel lbl_Beat;
+        private Sunny.UI.UILabel uiLabel3;
+        private Sunny.UI.UILedLabel lbl_BadCount;
+        private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UILedLabel lbl_ProducteCount;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UILedBulb led_ProducteState;
     }
 }
