@@ -52,6 +52,19 @@
             lbl_TotalAlarm = new Sunny.UI.UILedLabel();
             uiLabel7 = new Sunny.UI.UILabel();
             led_ProducteState = new Sunny.UI.UILedBulb();
+            uiLabel8 = new Sunny.UI.UILabel();
+            led_PlcState = new Sunny.UI.UILedBulb();
+            uiLabel9 = new Sunny.UI.UILabel();
+            lbl_CPUInformation = new Sunny.UI.UILabel();
+            uiLabel10 = new Sunny.UI.UILabel();
+            lbl_MemoryInformation = new Sunny.UI.UILabel();
+            uiLabel12 = new Sunny.UI.UILabel();
+            lbl_SoftwareVersion = new Sunny.UI.UILabel();
+            uiLabel14 = new Sunny.UI.UILabel();
+            lbl_IsAuthorization = new Sunny.UI.UILabel();
+            uiLabel16 = new Sunny.UI.UILabel();
+            lbl_Deadline = new Sunny.UI.UILabel();
+            Footer.SuspendLayout();
             Header.SuspendLayout();
             uiPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -60,6 +73,18 @@
             // 
             // Footer
             // 
+            Footer.Controls.Add(lbl_Deadline);
+            Footer.Controls.Add(lbl_IsAuthorization);
+            Footer.Controls.Add(lbl_SoftwareVersion);
+            Footer.Controls.Add(lbl_MemoryInformation);
+            Footer.Controls.Add(lbl_CPUInformation);
+            Footer.Controls.Add(led_PlcState);
+            Footer.Controls.Add(uiLabel16);
+            Footer.Controls.Add(uiLabel14);
+            Footer.Controls.Add(uiLabel12);
+            Footer.Controls.Add(uiLabel10);
+            Footer.Controls.Add(uiLabel9);
+            Footer.Controls.Add(uiLabel8);
             Footer.Location = new Point(195, 664);
             Footer.Size = new Size(1085, 56);
             // 
@@ -236,6 +261,7 @@
             lbl_Time.Size = new Size(199, 23);
             lbl_Time.TabIndex = 1;
             lbl_Time.Text = "2024-10-12 23:05:23";
+            lbl_Time.Click += lbl_Time_Click;
             // 
             // lbl_Min
             // 
@@ -386,6 +412,160 @@
             led_ProducteState.TabIndex = 3;
             led_ProducteState.Text = "uiLedBulb1";
             // 
+            // uiLabel8
+            // 
+            uiLabel8.BackColor = Color.Transparent;
+            uiLabel8.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel8.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel8.Image = Properties.Resources.连接状态;
+            uiLabel8.ImageAlign = ContentAlignment.MiddleLeft;
+            uiLabel8.Location = new Point(17, 14);
+            uiLabel8.Name = "uiLabel8";
+            uiLabel8.Size = new Size(134, 32);
+            uiLabel8.TabIndex = 0;
+            uiLabel8.Text = "PLC连接状态";
+            uiLabel8.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // led_PlcState
+            // 
+            led_PlcState.BackColor = Color.Transparent;
+            led_PlcState.Location = new Point(157, 14);
+            led_PlcState.Name = "led_PlcState";
+            led_PlcState.Size = new Size(32, 32);
+            led_PlcState.TabIndex = 3;
+            led_PlcState.Text = "uiLedBulb1";
+            // 
+            // uiLabel9
+            // 
+            uiLabel9.BackColor = Color.Transparent;
+            uiLabel9.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel9.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel9.Image = Properties.Resources.CPU信息;
+            uiLabel9.ImageAlign = ContentAlignment.MiddleLeft;
+            uiLabel9.Location = new Point(202, 14);
+            uiLabel9.Name = "uiLabel9";
+            uiLabel9.Size = new Size(107, 32);
+            uiLabel9.TabIndex = 0;
+            uiLabel9.Text = "CPU信息";
+            uiLabel9.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lbl_CPUInformation
+            // 
+            lbl_CPUInformation.BackColor = Color.Transparent;
+            lbl_CPUInformation.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_CPUInformation.ForeColor = Color.FromArgb(48, 48, 48);
+            lbl_CPUInformation.Location = new Point(306, 14);
+            lbl_CPUInformation.Name = "lbl_CPUInformation";
+            lbl_CPUInformation.Size = new Size(52, 32);
+            lbl_CPUInformation.TabIndex = 4;
+            lbl_CPUInformation.Text = "5%";
+            lbl_CPUInformation.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // uiLabel10
+            // 
+            uiLabel10.BackColor = Color.Transparent;
+            uiLabel10.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel10.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel10.Image = Properties.Resources.内存信息;
+            uiLabel10.ImageAlign = ContentAlignment.MiddleLeft;
+            uiLabel10.Location = new Point(358, 14);
+            uiLabel10.Name = "uiLabel10";
+            uiLabel10.Size = new Size(107, 32);
+            uiLabel10.TabIndex = 0;
+            uiLabel10.Text = "内存信息";
+            uiLabel10.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lbl_MemoryInformation
+            // 
+            lbl_MemoryInformation.BackColor = Color.Transparent;
+            lbl_MemoryInformation.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_MemoryInformation.ForeColor = Color.FromArgb(48, 48, 48);
+            lbl_MemoryInformation.Location = new Point(462, 14);
+            lbl_MemoryInformation.Name = "lbl_MemoryInformation";
+            lbl_MemoryInformation.Size = new Size(52, 32);
+            lbl_MemoryInformation.TabIndex = 4;
+            lbl_MemoryInformation.Text = "5%";
+            lbl_MemoryInformation.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // uiLabel12
+            // 
+            uiLabel12.BackColor = Color.Transparent;
+            uiLabel12.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel12.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel12.Image = Properties.Resources.软件版本;
+            uiLabel12.ImageAlign = ContentAlignment.MiddleLeft;
+            uiLabel12.Location = new Point(526, 15);
+            uiLabel12.Name = "uiLabel12";
+            uiLabel12.Size = new Size(106, 32);
+            uiLabel12.TabIndex = 0;
+            uiLabel12.Text = "软件版本";
+            uiLabel12.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lbl_SoftwareVersion
+            // 
+            lbl_SoftwareVersion.BackColor = Color.Transparent;
+            lbl_SoftwareVersion.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_SoftwareVersion.ForeColor = Color.FromArgb(48, 48, 48);
+            lbl_SoftwareVersion.Location = new Point(637, 14);
+            lbl_SoftwareVersion.Name = "lbl_SoftwareVersion";
+            lbl_SoftwareVersion.Size = new Size(52, 32);
+            lbl_SoftwareVersion.TabIndex = 4;
+            lbl_SoftwareVersion.Text = "v1";
+            lbl_SoftwareVersion.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_SoftwareVersion.Click += lbl_SoftwareVersion_Click;
+            // 
+            // uiLabel14
+            // 
+            uiLabel14.BackColor = Color.Transparent;
+            uiLabel14.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel14.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel14.Image = Properties.Resources.授权;
+            uiLabel14.ImageAlign = ContentAlignment.MiddleLeft;
+            uiLabel14.Location = new Point(701, 14);
+            uiLabel14.Name = "uiLabel14";
+            uiLabel14.Size = new Size(106, 32);
+            uiLabel14.TabIndex = 0;
+            uiLabel14.Text = "CPU信息";
+            uiLabel14.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lbl_IsAuthorization
+            // 
+            lbl_IsAuthorization.BackColor = Color.Transparent;
+            lbl_IsAuthorization.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_IsAuthorization.ForeColor = Color.FromArgb(48, 48, 48);
+            lbl_IsAuthorization.Location = new Point(813, 14);
+            lbl_IsAuthorization.Name = "lbl_IsAuthorization";
+            lbl_IsAuthorization.Size = new Size(52, 32);
+            lbl_IsAuthorization.TabIndex = 4;
+            lbl_IsAuthorization.Text = "5%";
+            lbl_IsAuthorization.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // uiLabel16
+            // 
+            uiLabel16.BackColor = Color.Transparent;
+            uiLabel16.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel16.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel16.Image = Properties.Resources.期限;
+            uiLabel16.ImageAlign = ContentAlignment.MiddleLeft;
+            uiLabel16.Location = new Point(871, 15);
+            uiLabel16.Name = "uiLabel16";
+            uiLabel16.Size = new Size(106, 33);
+            uiLabel16.TabIndex = 0;
+            uiLabel16.Text = "使用期限";
+            uiLabel16.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lbl_Deadline
+            // 
+            lbl_Deadline.BackColor = Color.Transparent;
+            lbl_Deadline.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Deadline.ForeColor = Color.FromArgb(48, 48, 48);
+            lbl_Deadline.Location = new Point(973, 15);
+            lbl_Deadline.Name = "lbl_Deadline";
+            lbl_Deadline.Size = new Size(92, 32);
+            lbl_Deadline.TabIndex = 4;
+            lbl_Deadline.Text = "使用5分钟";
+            lbl_Deadline.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // FrmMain
             // 
             AllowShowTitle = false;
@@ -396,6 +576,7 @@
             ShowTitle = false;
             Text = "Form1";
             ZoomScaleRect = new Rectangle(15, 15, 800, 450);
+            Footer.ResumeLayout(false);
             Header.ResumeLayout(false);
             uiPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -429,5 +610,17 @@
         private Sunny.UI.UILedLabel lbl_ProducteCount;
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UILedBulb led_ProducteState;
+        private Sunny.UI.UILedBulb led_PlcState;
+        private Sunny.UI.UILabel uiLabel9;
+        private Sunny.UI.UILabel uiLabel8;
+        private Sunny.UI.UILabel lbl_Deadline;
+        private Sunny.UI.UILabel lbl_IsAuthorization;
+        private Sunny.UI.UILabel lbl_SoftwareVersion;
+        private Sunny.UI.UILabel lbl_MemoryInformation;
+        private Sunny.UI.UILabel lbl_CPUInformation;
+        private Sunny.UI.UILabel uiLabel16;
+        private Sunny.UI.UILabel uiLabel14;
+        private Sunny.UI.UILabel uiLabel12;
+        private Sunny.UI.UILabel uiLabel10;
     }
 }

@@ -8,5 +8,15 @@ namespace Ya.SprayProcessSCADASystem
         {
             InitializeComponent();
         }
+
+        private void lbl_Time_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_SoftwareVersion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
