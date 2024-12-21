@@ -261,8 +261,6 @@
             lbl_Time.Size = new Size(199, 23);
             lbl_Time.TabIndex = 1;
             lbl_Time.Text = "2024-10-12 23:05:23";
-            lbl_Time.Click += lbl_Time_Click;
-            // 
             // lbl_Min
             // 
             lbl_Min.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -512,7 +510,6 @@
             lbl_SoftwareVersion.TabIndex = 4;
             lbl_SoftwareVersion.Text = "v1";
             lbl_SoftwareVersion.TextAlign = ContentAlignment.MiddleCenter;
-            lbl_SoftwareVersion.Click += lbl_SoftwareVersion_Click;
             // 
             // uiLabel14
             // 

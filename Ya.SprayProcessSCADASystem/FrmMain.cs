@@ -7,16 +7,19 @@ namespace Ya.SprayProcessSCADASystem
         public FrmMain()
         {
             InitializeComponent();
+
+            //设置初始页面索引（关联页面，唯一不重复即可）
+            int pageIndex = 1000;
+
+            TreeNode parent = Aside.CreateNode("监控模块", 61451, 24, pageIndex);
+            Aside.CreateChildNode(parent, AddPage(new PageEquipmentMonitor(), ++pageIndex));
+
+            TreeNode parent1 = Aside.CreateNode("总控模块", 61451, 24, pageIndex);
+            Aside.CreateChildNode(parent1, AddPage(new PageTotalEquipmentControl(), ++pageIndex));
+
+
         }
 
-        private void lbl_Time_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_SoftwareVersion_Click(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }
