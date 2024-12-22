@@ -1,5 +1,4 @@
-﻿using Sunny.UI;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Ya.SprayProcessSCADASystem
 {
-    public partial class PageEquipmentMonitor : UIPage
+    public partial class UserDeviceState : UserControl
     {
-        public PageEquipmentMonitor()
+        public UserDeviceState()
         {
             InitializeComponent();
-        }
-
-        private void userDeviceUnitControl1_ClickEvent(object sender, EventArgs e)
-        {
-
         }
     }
 }

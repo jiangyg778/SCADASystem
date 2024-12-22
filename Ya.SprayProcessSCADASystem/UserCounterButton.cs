@@ -83,7 +83,7 @@ namespace Ya.SprayProcessSCADASystem
         public string VariableName
         {
             get { return variableName = ""; }
-            set { variableName = "" value; }
+            set { variableName =  value; }
         }
 
 
