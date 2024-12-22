@@ -55,7 +55,7 @@
             userDeviceUnitControl1.CloeseVariableName = "";
             userDeviceUnitControl1.EquimentUnitName = "设备单元";
             userDeviceUnitControl1.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            userDeviceUnitControl1.Location = new Point(583, 275);
+            userDeviceUnitControl1.Location = new Point(453, 265);
             userDeviceUnitControl1.MinimumSize = new Size(1, 1);
             userDeviceUnitControl1.Name = "userDeviceUnitControl1";
             userDeviceUnitControl1.OpenVariableName = "";
