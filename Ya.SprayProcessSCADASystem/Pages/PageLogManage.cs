@@ -13,9 +13,12 @@ namespace Ya.SprayProcessSCADASystem
 {
     public partial class PageLogManage : UIPage
     {
+        // 日志页面
         public PageLogManage()
         {
             InitializeComponent();
         }
+
+        
     }
 }
