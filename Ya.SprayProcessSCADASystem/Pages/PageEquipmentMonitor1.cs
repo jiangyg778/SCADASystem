@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace Ya.SprayProcessSCADASystem
 {
-    public partial class PageEquipmentMonitor : UIPage
+    public partial class PageEquipmentMonitor1 : UIPage
     {
         //  监控界面1
-        public PageEquipmentMonitor()
+        public PageEquipmentMonitor1()
         {
             InitializeComponent();
         }

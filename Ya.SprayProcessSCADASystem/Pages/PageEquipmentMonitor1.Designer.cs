@@ -1,6 +1,6 @@
 ﻿namespace Ya.SprayProcessSCADASystem
 {
-    partial class PageEquipmentMonitor
+    partial class PageEquipmentMonitor1
     {
         /// <summary>
         /// Required designer variable.

@@ -12,7 +12,7 @@ namespace Ya.SprayProcessSCADASystem
             int pageIndex = 1000;
 
             TreeNode parent = Aside.CreateNode("¼à¿ØÄ£¿é", 61451, 24, pageIndex);
-            Aside.CreateChildNode(parent, AddPage(new PageEquipmentMonitor(), ++pageIndex));
+            Aside.CreateChildNode(parent, AddPage(new PageEquipmentMonitor1(), ++pageIndex));
 
             TreeNode parent1 = Aside.CreateNode("×Ü¿ØÄ£¿é", 61451, 24, pageIndex);
             Aside.CreateChildNode(parent1, AddPage(new PageTotalEquipmentControl(), ++pageIndex));
