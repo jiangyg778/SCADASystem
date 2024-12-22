@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace Ya.SprayProcessSCADASystem
 {
+    // 控制模块
     public partial class PageTotalEquipmentControl : UIPage
     {
         public PageTotalEquipmentControl()

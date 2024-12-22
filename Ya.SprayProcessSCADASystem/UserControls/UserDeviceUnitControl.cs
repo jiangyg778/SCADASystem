@@ -51,16 +51,26 @@ namespace Ya.SprayProcessSCADASystem
         }
 
         private string openVariableName = "";
-        [Browsable(true)]
-        [Category("自定义属性")]
+        [Browsable(true)]//使属性可以暴露出来，显示到窗口中
+        [Category("自定义属性")]//自定义属性
         [Description("获取变量名称")]
         public string OpenVariableName
         {
-            get { return openVariableName = ""; }
+            get { return openVariableName; }
             set { openVariableName = value; }
         }
 
-        private string cloeseVariableName = "";
+
+
+        private string closeVariableName = "";
+        [Browsable(true)]//使属性可以暴露出来，显示到窗口中
+        [Category("自定义属性")]//自定义属性
+        [Description("获取变量名称")]
+        public string CloseVariableName
+        {
+            get { return closeVariableName; }
+            set { closeVariableName = value; }
+        }
 
         [Browsable(true)]
         [Category("自定义事件")]
@@ -70,17 +80,6 @@ namespace Ya.SprayProcessSCADASystem
         {
             ClickEvent?.Invoke(this, e);
         }
-
-        [Browsable(true)]
-        [Category("自定义属性")]
-        [Description("获取变量名称")]
-        public string CloeseVariableName
-        {
-            get { return cloeseVariableName = ""; }
-            set { cloeseVariableName = value; }
-        }
-
-
 
     }
 }
