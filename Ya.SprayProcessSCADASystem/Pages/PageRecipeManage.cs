@@ -13,6 +13,7 @@ namespace Ya.SprayProcessSCADASystem
 {
     public partial class PageRecipeManage : UIPage
     {
+        // 配方页面
         public PageRecipeManage()
         {
             InitializeComponent();
