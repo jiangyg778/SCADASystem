@@ -13,6 +13,7 @@ namespace Ya.SprayProcessSCADASystem
 {
     public partial class PageAuthManage : UIPage
     {
+        // 权限页面
         public PageAuthManage()
         {
             InitializeComponent();
