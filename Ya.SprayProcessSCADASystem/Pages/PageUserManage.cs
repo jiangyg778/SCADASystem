@@ -12,13 +12,18 @@ using System.Windows.Forms;
 namespace Ya.SprayProcessSCADASystem
 {
     public partial class PageUserManage : UIPage
-     
-    {
-       
 
+    {
+
+        // 用户页面
         public PageUserManage()
         {
             InitializeComponent();
+        }
+
+        private void PageUserManage_Initialize(object sender, EventArgs e)
+        {
+
         }
     }
 }
