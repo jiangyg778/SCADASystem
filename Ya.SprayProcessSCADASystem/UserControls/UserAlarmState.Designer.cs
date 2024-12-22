@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             uiTableLayoutPanel1 = new Sunny.UI.UITableLayoutPanel();
-            lbl_StateName = new Sunny.UI.UILabel();
+            lbl_AlarmName = new Sunny.UI.UILabel();
             lbl_AlarmState = new Sunny.UI.UISymbolLabel();
             uiTableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -40,7 +40,7 @@
             uiTableLayoutPanel1.ColumnCount = 2;
             uiTableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             uiTableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 60F));
-            uiTableLayoutPanel1.Controls.Add(lbl_StateName, 0, 0);
+            uiTableLayoutPanel1.Controls.Add(lbl_AlarmName, 0, 0);
             uiTableLayoutPanel1.Controls.Add(lbl_AlarmState, 1, 0);
             uiTableLayoutPanel1.Dock = DockStyle.Fill;
             uiTableLayoutPanel1.Location = new Point(0, 0);
@@ -51,17 +51,17 @@
             uiTableLayoutPanel1.TabIndex = 0;
             uiTableLayoutPanel1.TagString = null;
             // 
-            // lbl_StateName
+            // lbl_AlarmName
             // 
-            lbl_StateName.Dock = DockStyle.Fill;
-            lbl_StateName.Font = new Font("微软雅黑", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_StateName.ForeColor = Color.FromArgb(48, 48, 48);
-            lbl_StateName.Location = new Point(3, 0);
-            lbl_StateName.Name = "lbl_StateName";
-            lbl_StateName.Size = new Size(184, 60);
-            lbl_StateName.TabIndex = 0;
-            lbl_StateName.Text = "报警名称";
-            lbl_StateName.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_AlarmName.Dock = DockStyle.Fill;
+            lbl_AlarmName.Font = new Font("微软雅黑", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_AlarmName.ForeColor = Color.FromArgb(48, 48, 48);
+            lbl_AlarmName.Location = new Point(3, 0);
+            lbl_AlarmName.Name = "lbl_AlarmName";
+            lbl_AlarmName.Size = new Size(184, 60);
+            lbl_AlarmName.TabIndex = 0;
+            lbl_AlarmName.Text = "报警名称";
+            lbl_AlarmName.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lbl_AlarmState
             // 
@@ -79,10 +79,10 @@
             // 
             // UserAlarmState
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             Controls.Add(uiTableLayoutPanel1);
             Name = "UserAlarmState";
+            RectColor = Color.Transparent;
             Size = new Size(250, 60);
             uiTableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -91,7 +91,7 @@
         #endregion
 
         private Sunny.UI.UITableLayoutPanel uiTableLayoutPanel1;
-        private Sunny.UI.UILabel lbl_StateName;
+        private Sunny.UI.UILabel lbl_AlarmName;
         private Sunny.UI.UISymbolLabel lbl_AlarmState;
     }
 }

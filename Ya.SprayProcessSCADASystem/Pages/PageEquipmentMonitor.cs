@@ -13,6 +13,7 @@ namespace Ya.SprayProcessSCADASystem
 {
     public partial class PageEquipmentMonitor : UIPage
     {
+        //  监控界面1
         public PageEquipmentMonitor()
         {
             InitializeComponent();

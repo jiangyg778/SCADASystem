@@ -25,7 +25,11 @@ namespace Ya.SprayProcessSCADASystem
         public string DeviceName
         {
             get { return deviceAlarmName; }
-            set { deviceAlarmName = value; }
+            set
+            {
+                deviceAlarmName = value;
+                this.lbl_AlarmName.Text = value;
+            }
         }
 
         private bool state = true;

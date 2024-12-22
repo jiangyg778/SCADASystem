@@ -78,10 +78,10 @@
             // 
             // UserDeviceState
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             Controls.Add(uiTableLayoutPanel1);
             Name = "UserDeviceState";
+            RectColor = Color.Transparent;
             Size = new Size(250, 60);
             uiTableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
