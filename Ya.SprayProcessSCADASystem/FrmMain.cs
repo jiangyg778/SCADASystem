@@ -1,8 +1,10 @@
 using HZY.Framework.DependencyInjection;
 using IoTClient.Common.Enums;
+using IoTClient.Enums;
 using Microsoft.Extensions.DependencyInjection;
 using MiniExcelLibs;
 using Sunny.UI;
+using System.IO.Pipelines;
 using Ya.Helper;
 using Ya.Model;
 using Ya.SprayProcessSCADASystem.Pages;
@@ -23,6 +25,7 @@ namespace Ya.SprayProcessSCADASystem
         }
 
         private bool plcIsConnected = false; // plc是否连接
+        private CancellationTokenSource cts = new CancellationTokenSource();
 
         private void InitConfig()
         {
@@ -32,13 +35,18 @@ namespace Ya.SprayProcessSCADASystem
             // 读取PLC的端口号
             Globals.Port = Globals.IniFile.ReadInt("PLC参数", "PLC端口", 102);
             // 读取PLC的CPU类型
-            Globals.CpuType = Enum.Parse<SiemensVersion>(Globals.IniFile.ReadString("PLC参数", "CPU类型", "S7-1200"));
+            Globals.CpuType = Enum.Parse<SiemensVersion>(Globals.IniFile.ReadString("PLC参数", "CPU类型", "S7_1200"));
             // 读取PLC的插槽号
             Globals.Slot = Globals.IniFile.ReadByte("PLC参数", "插槽号", 0);
             // 读取PLC的机架号
             Globals.Rack = Globals.IniFile.ReadByte("PLC参数", "机架号", 0);
             // 读取PLC的链接超时时间
-            Globals.ConnectTimeOut = Globals.IniFile.ReadInt("PLC参数", "链接超时时间", 5000);
+            Globals.ConnectTimeOut = Globals.IniFile.ReadInt("PLC参数", "链接超时时间", 3000);
+            // 读取PLC的读取循环时间
+            Globals.ReadTimeInterval = Globals.IniFile.ReadInt("PLC参数", "循环读取时间", 500);
+            // 读取PLC的重连时间
+            Globals.ReConnectTimeInterval = Globals.IniFile.ReadInt("PLC参数", "重连时间", 3000);
+
         }
 
         private void InitPlcClient()
@@ -60,11 +68,72 @@ namespace Ya.SprayProcessSCADASystem
             }
             else
             {
-                plcIsConnected= false;
+                plcIsConnected = false;
                 this.led_PlcState.On = false;
             }
 
+            for (int i = 0; i < plcVarList.Count; i++)
+            {
+                // 初始化plc变量地址 地址-类型
+                Globals.ReadDic.Add(plcVarList[i].PLC地址, Enum.Parse<DataTypeEnum>(plcVarList[i].变量类型, true));
+                // 初始化plc变量写入 名称-值
+                Globals.WriteDic.Add(plcVarList[i].名称, plcVarList[i].PLC地址);
+                // 初始化plc变量读取 名称-值
+                Globals.DataDic.Add(plcVarList[i].名称, "NA");
+            }
+            Task.Run(async () =>
+            {
+                while (!cts.IsCancellationRequested)
+                {
+                    if (plcIsConnected)
+                    {
+                        //批量读取
+                        var readResult = Globals.SiemensClient.BatchRead(Globals.ReadDic);
+                        if (readResult.IsSucceed)
+                        {
+                            for (int i = 0; i < plcVarList.Count; i++)
+                            {
+                                Globals.DataDic[plcVarList[i].名称] = readResult.Value[plcVarList[i].PLC地址];
+                            }
+                        }
+                        else
+                        {
+                            Globals.SiemensClient.Close();
+                            plcIsConnected = false;
+                            this.Invoke(() =>
+                            {
+                                this.led_PlcState.On = false;
+                            });
+                        }
+                        await Task.Delay(Globals.ReadTimeInterval);
+                    }
+                    else
+                    {
+                        // 重新连接
+                        var reConnectResult = Globals.SiemensClient.Open();
+                        if (reConnectResult.IsSucceed)
+                        {
+                            plcIsConnected = true;
+                            this.Invoke(() =>
+                            {
+                                this.led_PlcState.On = true;
+                            });
+                        }
+                        else
+                        {
+                            plcIsConnected = false;
+                            this.Invoke(() =>
+                            {
+                                this.led_PlcState.On = false;
+                            });
+                        }
+                        await Task.Delay(Globals.ReConnectTimeInterval);
+                    }
+
+                }
+            });
         }
+
 
         private void InitAsideUI()
         {

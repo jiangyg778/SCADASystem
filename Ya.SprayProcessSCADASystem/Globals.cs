@@ -48,7 +48,8 @@ namespace Ya.SprayProcessSCADASystem
         // plc变量值 读取的字典
         public static Dictionary<string,object> DataDic= new Dictionary<string,object>();
 
-
+        //plc变量值 写入的字典
+        public static Dictionary<string, object> WriteDic = new Dictionary<string, object>();
 
     }
 }
