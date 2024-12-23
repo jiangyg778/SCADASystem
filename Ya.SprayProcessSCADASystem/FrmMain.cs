@@ -2,6 +2,7 @@ using HZY.Framework.DependencyInjection;
 using IoTClient.Common.Enums;
 using IoTClient.Enums;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using MiniExcelLibs;
 using Sunny.UI;
 using System.IO.Pipelines;
@@ -12,9 +13,16 @@ using Ya.SprayProcessSCADASystem.Pages;
 namespace Ya.SprayProcessSCADASystem
 {
     public partial class FrmMain : UIHeaderAsideMainFooterFrame, ISingletonSelfDependency
+
     {
-        public FrmMain()
+        private bool plcIsConnected = false; // plc是否连接
+        private CancellationTokenSource cts = new CancellationTokenSource();
+        private readonly ILogger<FrmMain> _logger;
+
+        public FrmMain(ILogger<FrmMain> logge)
         {
+            this._logger = logge;
+
             InitializeComponent();
             Init();
             //Globals.IniFile.Write("PLC参数", "变量表地址", Application.StartupPath + "\\PLC_Var_Config.xlsx");
@@ -35,9 +43,6 @@ namespace Ya.SprayProcessSCADASystem
             Globals.SiemensClient.Close();
         }
 
-        private bool plcIsConnected = false; // plc是否连接
-        private CancellationTokenSource cts = new CancellationTokenSource();
-
         private void InitConfig()
         {
             Globals.PlcVarConfigPath = Globals.IniFile.ReadString("PLC参数", "变量表地址", Application.StartupPath + "\\PLC_Var_Config.xlsx");
@@ -57,6 +62,8 @@ namespace Ya.SprayProcessSCADASystem
             Globals.ReadTimeInterval = Globals.IniFile.ReadInt("PLC参数", "循环读取时间", 500);
             // 读取PLC的重连时间
             Globals.ReConnectTimeInterval = Globals.IniFile.ReadInt("PLC参数", "重连时间", 3000);
+            _logger.LogInformation("读取配置文件成功");
+
 
         }
 
@@ -92,6 +99,8 @@ namespace Ya.SprayProcessSCADASystem
                 // 初始化plc变量读取 名称-值
                 Globals.DataDic.Add(plcVarList[i].名称, "NA");
             }
+            _logger.LogInformation("初始化plc客户端成功");
+
             try
             {
                 Task.Run(async () =>
@@ -154,7 +163,6 @@ namespace Ya.SprayProcessSCADASystem
             }
         }
 
-
         private void InitAsideUI()
         {
             int pageIndex = 1000;
@@ -185,6 +193,8 @@ namespace Ya.SprayProcessSCADASystem
 
             TreeNode parent7 = Aside.CreateNode("参数模块", 559576, 34, pageIndex);
             Aside.CreateChildNode(parent7, AddPage(Globals.ServiceProvider.GetRequiredService<PageSystemParameterSet>(), ++pageIndex));
+
+            _logger.LogInformation("侧边栏初始化完成");
         }
 
         private void InitHeaderUI()
@@ -216,6 +226,8 @@ namespace Ya.SprayProcessSCADASystem
             {
                 Header.CreateChildNode(Header.Nodes[2], i.ToString(), i);
             }
+            _logger.LogInformation("头部菜单初始化完成");
+
 
         }
 

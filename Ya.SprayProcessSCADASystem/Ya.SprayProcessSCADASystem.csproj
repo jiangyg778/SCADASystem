@@ -35,6 +35,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="PLC_Var_Config.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
