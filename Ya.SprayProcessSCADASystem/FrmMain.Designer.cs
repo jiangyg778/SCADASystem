@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             uiPanel1 = new Sunny.UI.UIPanel();
             lbl_Exit = new Sunny.UI.UISymbolLabel();
             lbl_Min = new Sunny.UI.UISymbolLabel();
@@ -64,6 +65,7 @@
             lbl_IsAuthorization = new Sunny.UI.UILabel();
             uiLabel16 = new Sunny.UI.UILabel();
             lbl_Deadline = new Sunny.UI.UILabel();
+            StyleManager = new Sunny.UI.UIStyleManager(components);
             Footer.SuspendLayout();
             Header.SuspendLayout();
             uiPanel1.SuspendLayout();
@@ -107,9 +109,10 @@
             Header.Controls.Add(uiLabel1);
             Header.Controls.Add(uiPanel1);
             Header.Location = new Point(0, 0);
-            Header.NodeInterval = 20;
-            Header.NodeSize = new Size(60, 40);
+            Header.NodeInterval = 0;
+            Header.NodeSize = new Size(70, 50);
             Header.Size = new Size(1280, 115);
+            Header.MenuItemClick += Header_MenuItemClick;
             // 
             // uiPanel1
             // 
@@ -566,6 +569,11 @@
             lbl_Deadline.Text = "使用5分钟";
             lbl_Deadline.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // StyleManager
+            // 
+            StyleManager.DPIScale = true;
+            StyleManager.GlobalFont = true;
+            // 
             // FrmMain
             // 
             AllowShowTitle = false;
@@ -622,5 +630,6 @@
         private Sunny.UI.UILabel uiLabel14;
         private Sunny.UI.UILabel uiLabel12;
         private Sunny.UI.UILabel uiLabel10;
+        private Sunny.UI.UIStyleManager StyleManager;
     }
 }

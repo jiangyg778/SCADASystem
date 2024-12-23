@@ -79,5 +79,41 @@ namespace Ya.SprayProcessSCADASystem
 
         }
 
+        private void Header_MenuItemClick(string itemText, int menuIndex, int pageIndex)
+        {
+            switch (menuIndex)
+            {
+                case 0:
+                    UIStyle style = (UIStyle)pageIndex;
+                    if (pageIndex < UIStyle.Colorful.Value())
+                    {
+                        StyleManager.Style = style;
+
+                        if (UIExtension.SetStyleManger != null)
+                        {
+                            UIExtension.SetStyleManger(StyleManager);
+                        }
+                    }
+                    break;
+
+                case 1:
+                    UIStyles.DPIScale = true;
+                    UIStyles.GlobalFont = true; 
+                    UIStyles.GlobalFontName = itemText;
+
+                    UIStyles.GlobalFontScale = SystemConsts.DefaultFontScale;
+                    UIStyles.SetDPIScale();
+                    break;
+
+                case 2:
+                    UIStyles.GlobalFontScale = int.Parse(itemText);
+                    UIStyles.SetDPIScale();
+                    break;
+
+                default:
+
+                    break;
+            }
+        }
     }
 }
