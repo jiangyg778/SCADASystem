@@ -13,6 +13,7 @@ namespace Ya.SprayProcessSCADASystem
 {
     public partial class PageChartManage : UIPage
     {
+        // 报表管理页面
         public PageChartManage()
         {
             InitializeComponent();
