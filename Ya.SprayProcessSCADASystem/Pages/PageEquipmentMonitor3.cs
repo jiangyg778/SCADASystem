@@ -1,4 +1,5 @@
-﻿using Sunny.UI;
+﻿using HZY.Framework.DependencyInjection;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Ya.SprayProcessSCADASystem.Pages
 {
-    public partial class PageEquipmentMonitor3 : UIPage
+    public partial class PageEquipmentMonitor3 : UIPage, ISingletonSelfDependency
     {
         public PageEquipmentMonitor3()
         {

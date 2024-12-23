@@ -1,4 +1,5 @@
-﻿using Sunny.UI;
+﻿using HZY.Framework.DependencyInjection;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 namespace Ya.SprayProcessSCADASystem
 {
     // 控制模块
-    public partial class PageTotalEquipmentControl : UIPage
+    public partial class PageTotalEquipmentControl : UIPage, ISingletonSelfDependency
     {
         public PageTotalEquipmentControl()
         {

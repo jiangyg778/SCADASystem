@@ -40,12 +40,12 @@
             userAlarmState2 = new UserAlarmState();
             userDeviceState4 = new UserDeviceState();
             uiTitlePanel3 = new Sunny.UI.UITitlePanel();
+            userVarCurrentValue5 = new UserVarCurrentValue();
+            userDeviceState5 = new UserDeviceState();
             userVarCurrentValue3 = new UserVarCurrentValue();
             userAlarmState4 = new UserAlarmState();
             userAlarmState5 = new UserAlarmState();
             userDeviceState3 = new UserDeviceState();
-            userDeviceState5 = new UserDeviceState();
-            userVarCurrentValue5 = new UserVarCurrentValue();
             uiTitlePanel1.SuspendLayout();
             uiTitlePanel2.SuspendLayout();
             uiTitlePanel3.SuspendLayout();
@@ -240,6 +240,36 @@
             uiTitlePanel3.Text = "陶化工位";
             uiTitlePanel3.TextAlignment = ContentAlignment.MiddleCenter;
             // 
+            // userVarCurrentValue5
+            // 
+            userVarCurrentValue5.DeviceVarName = "陶化pH值";
+            userVarCurrentValue5.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            userVarCurrentValue5.Location = new Point(584, 92);
+            userVarCurrentValue5.MinimumSize = new Size(1, 1);
+            userVarCurrentValue5.Name = "userVarCurrentValue5";
+            userVarCurrentValue5.Size = new Size(395, 44);
+            userVarCurrentValue5.TabIndex = 3;
+            userVarCurrentValue5.Text = "userVarCurrentValue1";
+            userVarCurrentValue5.TextAlignment = ContentAlignment.MiddleCenter;
+            userVarCurrentValue5.Unit = "Mpa";
+            userVarCurrentValue5.VariableName = "陶化pH值";
+            userVarCurrentValue5.VarValue = 0F;
+            // 
+            // userDeviceState5
+            // 
+            userDeviceState5.DeviceRunName = "陶化排风机运行状态";
+            userDeviceState5.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            userDeviceState5.Location = new Point(278, 36);
+            userDeviceState5.MinimumSize = new Size(1, 1);
+            userDeviceState5.Name = "userDeviceState5";
+            userDeviceState5.RectColor = Color.Transparent;
+            userDeviceState5.Size = new Size(258, 60);
+            userDeviceState5.State = false;
+            userDeviceState5.TabIndex = 1;
+            userDeviceState5.Text = "userDeviceState1";
+            userDeviceState5.TextAlignment = ContentAlignment.MiddleCenter;
+            userDeviceState5.VariableName = "陶化排风机运行状态";
+            // 
             // userVarCurrentValue3
             // 
             userVarCurrentValue3.DeviceVarName = "粗洗喷淋泵压力值";
@@ -300,46 +330,16 @@
             userDeviceState3.TextAlignment = ContentAlignment.MiddleCenter;
             userDeviceState3.VariableName = "陶化喷淋泵运行状态";
             // 
-            // userDeviceState5
-            // 
-            userDeviceState5.DeviceRunName = "陶化排风机运行状态";
-            userDeviceState5.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            userDeviceState5.Location = new Point(278, 36);
-            userDeviceState5.MinimumSize = new Size(1, 1);
-            userDeviceState5.Name = "userDeviceState5";
-            userDeviceState5.RectColor = Color.Transparent;
-            userDeviceState5.Size = new Size(258, 60);
-            userDeviceState5.State = false;
-            userDeviceState5.TabIndex = 1;
-            userDeviceState5.Text = "userDeviceState1";
-            userDeviceState5.TextAlignment = ContentAlignment.MiddleCenter;
-            userDeviceState5.VariableName = "陶化排风机运行状态";
-            // 
-            // userVarCurrentValue5
-            // 
-            userVarCurrentValue5.DeviceVarName = "陶化pH值";
-            userVarCurrentValue5.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            userVarCurrentValue5.Location = new Point(584, 92);
-            userVarCurrentValue5.MinimumSize = new Size(1, 1);
-            userVarCurrentValue5.Name = "userVarCurrentValue5";
-            userVarCurrentValue5.Size = new Size(395, 44);
-            userVarCurrentValue5.TabIndex = 3;
-            userVarCurrentValue5.Text = "userVarCurrentValue1";
-            userVarCurrentValue5.TextAlignment = ContentAlignment.MiddleCenter;
-            userVarCurrentValue5.Unit = "Mpa";
-            userVarCurrentValue5.VariableName = "陶化pH值";
-            userVarCurrentValue5.VarValue = 0F;
-            // 
-            // PageEquipmentMonitor
+            // PageEquipmentMonitor1
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(1085, 549);
             Controls.Add(uiTitlePanel3);
             Controls.Add(uiTitlePanel2);
             Controls.Add(uiTitlePanel1);
-            Name = "PageEquipmentMonitor";
+            Name = "PageEquipmentMonitor1";
             Symbol = 57397;
-            Text = "设备监控";
+            Text = "设备监控1";
             uiTitlePanel1.ResumeLayout(false);
             uiTitlePanel2.ResumeLayout(false);
             uiTitlePanel3.ResumeLayout(false);

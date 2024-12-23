@@ -1,4 +1,5 @@
-﻿using Sunny.UI;
+﻿using HZY.Framework.DependencyInjection;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Ya.SprayProcessSCADASystem
 {
-    public partial class PageRecipeManage : UIPage
+    public partial class PageRecipeManage : UIPage, ISingletonSelfDependency
     {
         // 配方页面
         public PageRecipeManage()

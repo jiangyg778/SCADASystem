@@ -19,6 +19,7 @@ namespace Ya.SprayProcessSCADASystem
             ConfigureService(services);
             //构建服务提供者
             var serviceProvider = services.BuildServiceProvider();
+            Globals.ServiceProvider = serviceProvider;
             ApplicationConfiguration.Initialize();
             //获取服务
             var frmMain = serviceProvider.GetService<FrmMain>();
@@ -27,7 +28,7 @@ namespace Ya.SprayProcessSCADASystem
 
         private static void ConfigureService(ServiceCollection services)
         {
-            //将解决方案中（确切地说是指定程序集中的）所有符合规则的接口和它们的实现类注入到依赖注入容器中。
+            ///注册依赖注入 通过程序集的某一个类 自动注册程序集内的类 条件是 该类实现了 ISingletonDependency之类的 接口
             services.AddDependencyInjection(new List<Assembly>() { typeof(Program).Assembly });
         }
     }

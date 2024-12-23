@@ -1,4 +1,5 @@
-﻿using Sunny.UI;
+﻿using HZY.Framework.DependencyInjection;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Ya.SprayProcessSCADASystem
 {
-    public partial class PageChartManage : UIPage
+    public partial class PageChartManage : UIPage, ISingletonSelfDependency
     {
         // 报表管理页面
         public PageChartManage()
