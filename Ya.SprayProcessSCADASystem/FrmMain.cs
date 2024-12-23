@@ -1,8 +1,9 @@
+using HZY.Framework.DependencyInjection;
 using Sunny.UI;
 
 namespace Ya.SprayProcessSCADASystem
 {
-    public partial class FrmMain : UIHeaderAsideMainFooterFrame
+    public partial class FrmMain : UIHeaderAsideMainFooterFrame,ISingletonSelfDependency
     {
         public FrmMain()
         {

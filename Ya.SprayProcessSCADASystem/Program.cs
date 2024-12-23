@@ -1,3 +1,7 @@
+using HZY.Framework.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
+
 namespace Ya.SprayProcessSCADASystem
 {
     internal static class Program
@@ -8,10 +12,23 @@ namespace Ya.SprayProcessSCADASystem
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+
+            //创建服务容器
+            var services = new ServiceCollection();
+            //注册服务
+            ConfigureService(services);
+            //构建服务提供者
+            var serviceProvider = services.BuildServiceProvider();
             ApplicationConfiguration.Initialize();
-            Application.Run(new FrmMain());
+            //获取服务
+            var frmMain = serviceProvider.GetService<FrmMain>();
+            Application.Run(frmMain);
+        }
+
+        private static void ConfigureService(ServiceCollection services)
+        {
+            //将解决方案中（确切地说是指定程序集中的）所有符合规则的接口和它们的实现类注入到依赖注入容器中。
+            services.AddDependencyInjection(new List<Assembly>() { typeof(Program).Assembly });
         }
     }
 }
