@@ -13,6 +13,7 @@ namespace Ya.SprayProcessSCADASystem
 {
     public partial class PageReportManage : UIPage
     {
+        // 报表页面
         public PageReportManage()
         {
             InitializeComponent();
