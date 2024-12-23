@@ -44,6 +44,7 @@
             cb_CPUType = new Sunny.UI.UIComboBox();
             txt_ReConnectTimeInterval = new Sunny.UI.UITextBox();
             txt_ReadTimeInterval = new Sunny.UI.UITextBox();
+            txt_PLCVarAddressPath = new Sunny.UI.UITextBox();
             txt_Slot = new Sunny.UI.UITextBox();
             txt_ConnectTimeOut = new Sunny.UI.UITextBox();
             txt_Rack = new Sunny.UI.UITextBox();
@@ -51,6 +52,7 @@
             uiLabel3 = new Sunny.UI.UILabel();
             uiLabel11 = new Sunny.UI.UILabel();
             uiLabel10 = new Sunny.UI.UILabel();
+            uiLabel8 = new Sunny.UI.UILabel();
             插槽号 = new Sunny.UI.UILabel();
             uiLabel9 = new Sunny.UI.UILabel();
             uiLabel7 = new Sunny.UI.UILabel();
@@ -188,7 +190,7 @@
             btn_Save.Size = new Size(290, 102);
             btn_Save.TabIndex = 3;
             btn_Save.Text = "保存";
-            btn_Save.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_Save.Click += btn_Save_Click;
             // 
             // uiLabel1
             // 
@@ -219,6 +221,7 @@
             uiTitlePanel1.Controls.Add(cb_CPUType);
             uiTitlePanel1.Controls.Add(txt_ReConnectTimeInterval);
             uiTitlePanel1.Controls.Add(txt_ReadTimeInterval);
+            uiTitlePanel1.Controls.Add(txt_PLCVarAddressPath);
             uiTitlePanel1.Controls.Add(txt_Slot);
             uiTitlePanel1.Controls.Add(txt_ConnectTimeOut);
             uiTitlePanel1.Controls.Add(txt_Rack);
@@ -226,6 +229,7 @@
             uiTitlePanel1.Controls.Add(uiLabel3);
             uiTitlePanel1.Controls.Add(uiLabel11);
             uiTitlePanel1.Controls.Add(uiLabel10);
+            uiTitlePanel1.Controls.Add(uiLabel8);
             uiTitlePanel1.Controls.Add(插槽号);
             uiTitlePanel1.Controls.Add(uiLabel9);
             uiTitlePanel1.Controls.Add(uiLabel7);
@@ -250,7 +254,7 @@
             cb_CPUType.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cb_CPUType.ItemHoverColor = Color.FromArgb(155, 200, 255);
             cb_CPUType.ItemSelectForeColor = Color.FromArgb(235, 243, 255);
-            cb_CPUType.Location = new Point(88, 154);
+            cb_CPUType.Location = new Point(88, 134);
             cb_CPUType.Margin = new Padding(4, 5, 4, 5);
             cb_CPUType.MinimumSize = new Size(63, 0);
             cb_CPUType.Name = "cb_CPUType";
@@ -289,10 +293,24 @@
             txt_ReadTimeInterval.TextAlignment = ContentAlignment.MiddleLeft;
             txt_ReadTimeInterval.Watermark = "";
             // 
+            // txt_PLCVarAddressPath
+            // 
+            txt_PLCVarAddressPath.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_PLCVarAddressPath.Location = new Point(155, 263);
+            txt_PLCVarAddressPath.Margin = new Padding(4, 5, 4, 5);
+            txt_PLCVarAddressPath.MinimumSize = new Size(1, 16);
+            txt_PLCVarAddressPath.Name = "txt_PLCVarAddressPath";
+            txt_PLCVarAddressPath.Padding = new Padding(5);
+            txt_PLCVarAddressPath.ShowText = false;
+            txt_PLCVarAddressPath.Size = new Size(368, 29);
+            txt_PLCVarAddressPath.TabIndex = 3;
+            txt_PLCVarAddressPath.TextAlignment = ContentAlignment.MiddleLeft;
+            txt_PLCVarAddressPath.Watermark = "";
+            // 
             // txt_Slot
             // 
             txt_Slot.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_Slot.Location = new Point(88, 255);
+            txt_Slot.Location = new Point(88, 222);
             txt_Slot.Margin = new Padding(4, 5, 4, 5);
             txt_Slot.MinimumSize = new Size(1, 16);
             txt_Slot.Name = "txt_Slot";
@@ -320,7 +338,7 @@
             // txt_Rack
             // 
             txt_Rack.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_Rack.Location = new Point(88, 202);
+            txt_Rack.Location = new Point(88, 178);
             txt_Rack.Margin = new Padding(4, 5, 4, 5);
             txt_Rack.MinimumSize = new Size(1, 16);
             txt_Rack.Name = "txt_Rack";
@@ -334,7 +352,7 @@
             // txt_Port
             // 
             txt_Port.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_Port.Location = new Point(88, 100);
+            txt_Port.Location = new Point(88, 90);
             txt_Port.Margin = new Padding(4, 5, 4, 5);
             txt_Port.MinimumSize = new Size(1, 16);
             txt_Port.Name = "txt_Port";
@@ -349,7 +367,7 @@
             // 
             uiLabel3.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
             uiLabel3.ForeColor = Color.FromArgb(48, 48, 48);
-            uiLabel3.Location = new Point(14, 154);
+            uiLabel3.Location = new Point(14, 137);
             uiLabel3.Name = "uiLabel3";
             uiLabel3.Size = new Size(100, 23);
             uiLabel3.TabIndex = 2;
@@ -373,13 +391,23 @@
             uiLabel10.Name = "uiLabel10";
             uiLabel10.Size = new Size(100, 23);
             uiLabel10.TabIndex = 2;
-            uiLabel10.Text = "读取超时";
+            uiLabel10.Text = "读取间隔";
+            // 
+            // uiLabel8
+            // 
+            uiLabel8.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel8.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel8.Location = new Point(14, 269);
+            uiLabel8.Name = "uiLabel8";
+            uiLabel8.Size = new Size(134, 23);
+            uiLabel8.TabIndex = 2;
+            uiLabel8.Text = "PLC变量地址路径";
             // 
             // 插槽号
             // 
             插槽号.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
             插槽号.ForeColor = Color.FromArgb(48, 48, 48);
-            插槽号.Location = new Point(14, 261);
+            插槽号.Location = new Point(14, 225);
             插槽号.Name = "插槽号";
             插槽号.Size = new Size(100, 23);
             插槽号.TabIndex = 2;
@@ -399,7 +427,7 @@
             // 
             uiLabel7.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
             uiLabel7.ForeColor = Color.FromArgb(48, 48, 48);
-            uiLabel7.Location = new Point(14, 208);
+            uiLabel7.Location = new Point(14, 181);
             uiLabel7.Name = "uiLabel7";
             uiLabel7.Size = new Size(100, 23);
             uiLabel7.TabIndex = 2;
@@ -409,7 +437,7 @@
             // 
             uiLabel2.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
             uiLabel2.ForeColor = Color.FromArgb(48, 48, 48);
-            uiLabel2.Location = new Point(14, 106);
+            uiLabel2.Location = new Point(14, 93);
             uiLabel2.Name = "uiLabel2";
             uiLabel2.Size = new Size(100, 23);
             uiLabel2.TabIndex = 2;
@@ -461,5 +489,7 @@
         private Sunny.UI.UILabel uiLabel10;
         private Sunny.UI.UILabel 插槽号;
         private Sunny.UI.UILabel uiLabel9;
+        private Sunny.UI.UITextBox txt_PLCVarAddressPath;
+        private Sunny.UI.UILabel uiLabel8;
     }
 }

@@ -1,7 +1,10 @@
 using HZY.Framework.DependencyInjection;
+using IoTClient.Common.Enums;
 using Microsoft.Extensions.DependencyInjection;
+using MiniExcelLibs;
 using Sunny.UI;
 using Ya.Helper;
+using Ya.Model;
 using Ya.SprayProcessSCADASystem.Pages;
 
 namespace Ya.SprayProcessSCADASystem
@@ -11,8 +14,56 @@ namespace Ya.SprayProcessSCADASystem
         public FrmMain()
         {
             InitializeComponent();
+
+            //Globals.IniFile.Write("PLC参数", "变量表地址", Application.StartupPath + "\\PLC_Var_Config.xlsx");
+            InitConfig();
             InitAsideUI();
             InitHeaderUI();
+            InitPlcClient();
+        }
+
+        private bool plcIsConnected = false; // plc是否连接
+
+        private void InitConfig()
+        {
+            Globals.PlcVarConfigPath = Globals.IniFile.ReadString("PLC参数", "变量表地址", Application.StartupPath + "\\PLC_Var_Config.xlsx");
+            // 读取PLC的Ip地址
+            Globals.IpAddress = Globals.IniFile.ReadString("PLC参数", "PLC地址", "127.0.0.1");
+            // 读取PLC的端口号
+            Globals.Port = Globals.IniFile.ReadInt("PLC参数", "PLC端口", 102);
+            // 读取PLC的CPU类型
+            Globals.CpuType = Enum.Parse<SiemensVersion>(Globals.IniFile.ReadString("PLC参数", "CPU类型", "S7-1200"));
+            // 读取PLC的插槽号
+            Globals.Slot = Globals.IniFile.ReadByte("PLC参数", "插槽号", 0);
+            // 读取PLC的机架号
+            Globals.Rack = Globals.IniFile.ReadByte("PLC参数", "机架号", 0);
+            // 读取PLC的链接超时时间
+            Globals.ConnectTimeOut = Globals.IniFile.ReadInt("PLC参数", "链接超时时间", 5000);
+        }
+
+        private void InitPlcClient()
+        {
+            //  读取表格的路径
+
+            // 导入PLC变量
+            var plcVarList = MiniExcel.Query<PLCVarConfigModel>(Globals.PlcVarConfigPath).ToList();
+
+            // 初始化plc客户端 西门子
+            Globals.SiemensClient = new IoTClient.Clients.PLC.SiemensClient(Globals.CpuType, Globals.IpAddress, Globals.Port, Globals.Slot, Globals.Rack, Globals.ConnectTimeOut);
+
+            // 第一次连接
+            var connectResult = Globals.SiemensClient.Open();
+            if (connectResult.IsSucceed)
+            {
+                plcIsConnected = true;
+                this.led_PlcState.On = true;
+            }
+            else
+            {
+                plcIsConnected= false;
+                this.led_PlcState.On = false;
+            }
+
         }
 
         private void InitAsideUI()
@@ -98,7 +149,7 @@ namespace Ya.SprayProcessSCADASystem
 
                 case 1:
                     UIStyles.DPIScale = true;
-                    UIStyles.GlobalFont = true; 
+                    UIStyles.GlobalFont = true;
                     UIStyles.GlobalFontName = itemText;
 
                     UIStyles.GlobalFontScale = SystemConsts.DefaultFontScale;
