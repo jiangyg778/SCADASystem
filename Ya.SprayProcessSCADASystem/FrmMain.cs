@@ -1,6 +1,7 @@
 using HZY.Framework.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Sunny.UI;
+using Ya.Helper;
 using Ya.SprayProcessSCADASystem.Pages;
 
 namespace Ya.SprayProcessSCADASystem
@@ -11,6 +12,7 @@ namespace Ya.SprayProcessSCADASystem
         {
             InitializeComponent();
             InitAsideUI();
+            InitHeaderUI();
         }
 
         private void InitAsideUI()
@@ -43,6 +45,38 @@ namespace Ya.SprayProcessSCADASystem
 
             TreeNode parent7 = Aside.CreateNode("参数模块", 559576, 34, pageIndex);
             Aside.CreateChildNode(parent7, AddPage(Globals.ServiceProvider.GetRequiredService<PageSystemParameterSet>(), ++pageIndex));
+        }
+
+        private void InitHeaderUI()
+        {
+            //设置关联
+            Header.TabControl = MainTabControl;
+
+
+            Header.Nodes.Add("");
+            Header.Nodes.Add("");
+            Header.Nodes.Add("");
+            Header.SetNodeSymbol(Header.Nodes[0], 558295, 34);
+            Header.SetNodeSymbol(Header.Nodes[1], 61489, 34);
+            Header.SetNodeSymbol(Header.Nodes[2], 557925, 34);
+            var styles = UIStyles.PopularStyles();
+            foreach (UIStyle style in styles)
+            {
+                Header.CreateChildNode(Header.Nodes[0], style.DisplayText(), style.Value());
+            }
+
+            //获取枚举FontsType的所有字体名称
+            for (int i = 0; i < Enum.GetValues(typeof(SystemEnums.FontsType)).Length; i++)
+            {
+                Header.CreateChildNode(Header.Nodes[1], Enum.GetName(typeof(SystemEnums.FontsType), i), i + 1);
+            }
+
+            //获取枚举FontSize的所有字体大小  75-125的范围 75 80 85 90 95 100 105 110 115 120 125
+            for (int i = 75; i <= 125; i += 5)
+            {
+                Header.CreateChildNode(Header.Nodes[2], i.ToString(), i);
+            }
+
         }
 
     }

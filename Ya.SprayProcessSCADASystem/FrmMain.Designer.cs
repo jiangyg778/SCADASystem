@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             uiPanel1 = new Sunny.UI.UIPanel();
+            lbl_Exit = new Sunny.UI.UISymbolLabel();
+            lbl_Min = new Sunny.UI.UISymbolLabel();
             st_AlarmInfo = new Sunny.UI.UIScrollingText();
             lbl_Subhead = new Sunny.UI.UILabel();
+            uiLabel6 = new Sunny.UI.UILabel();
+            lbl_Humidness = new Sunny.UI.UILabel();
+            uiLabel4 = new Sunny.UI.UILabel();
+            lbl_Temperature = new Sunny.UI.UILabel();
+            lbl_Time = new Sunny.UI.UILabel();
             lbl_User = new Sunny.UI.UILabel();
             lbl_Title = new Sunny.UI.UILabel();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
-            uiLabel4 = new Sunny.UI.UILabel();
-            lbl_Temperature = new Sunny.UI.UILabel();
-            lbl_Humidness = new Sunny.UI.UILabel();
-            uiLabel6 = new Sunny.UI.UILabel();
-            lbl_Time = new Sunny.UI.UILabel();
-            lbl_Min = new Sunny.UI.UISymbolLabel();
-            lbl_Exit = new Sunny.UI.UISymbolLabel();
             uiLabel1 = new Sunny.UI.UILabel();
             lbl_ProducteCount = new Sunny.UI.UILedLabel();
             uiLabel2 = new Sunny.UI.UILabel();
@@ -107,6 +107,8 @@
             Header.Controls.Add(uiLabel1);
             Header.Controls.Add(uiPanel1);
             Header.Location = new Point(0, 0);
+            Header.NodeInterval = 20;
+            Header.NodeSize = new Size(60, 40);
             Header.Size = new Size(1280, 115);
             // 
             // uiPanel1
@@ -135,6 +137,28 @@
             uiPanel1.Text = null;
             uiPanel1.TextAlignment = ContentAlignment.MiddleCenter;
             // 
+            // lbl_Exit
+            // 
+            lbl_Exit.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Exit.Location = new Point(1216, 10);
+            lbl_Exit.MinimumSize = new Size(1, 1);
+            lbl_Exit.Name = "lbl_Exit";
+            lbl_Exit.Size = new Size(46, 35);
+            lbl_Exit.Symbol = 61453;
+            lbl_Exit.SymbolSize = 45;
+            lbl_Exit.TabIndex = 3;
+            // 
+            // lbl_Min
+            // 
+            lbl_Min.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Min.Location = new Point(1164, 14);
+            lbl_Min.MinimumSize = new Size(1, 1);
+            lbl_Min.Name = "lbl_Min";
+            lbl_Min.Size = new Size(46, 35);
+            lbl_Min.Symbol = 61544;
+            lbl_Min.SymbolSize = 45;
+            lbl_Min.TabIndex = 3;
+            // 
             // st_AlarmInfo
             // 
             st_AlarmInfo.Active = true;
@@ -156,6 +180,67 @@
             lbl_Subhead.Size = new Size(232, 23);
             lbl_Subhead.TabIndex = 1;
             lbl_Subhead.Text = "Spray Process SCADA System";
+            // 
+            // uiLabel6
+            // 
+            uiLabel6.BackColor = Color.Transparent;
+            uiLabel6.Font = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel6.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel6.Image = Properties.Resources.湿度;
+            uiLabel6.ImageAlign = ContentAlignment.MiddleLeft;
+            uiLabel6.Location = new Point(970, 1);
+            uiLabel6.Name = "uiLabel6";
+            uiLabel6.Size = new Size(84, 32);
+            uiLabel6.TabIndex = 1;
+            uiLabel6.Text = "厂房湿度";
+            uiLabel6.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lbl_Humidness
+            // 
+            lbl_Humidness.BackColor = Color.Transparent;
+            lbl_Humidness.Font = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Humidness.ForeColor = Color.Green;
+            lbl_Humidness.Location = new Point(1060, 10);
+            lbl_Humidness.Name = "lbl_Humidness";
+            lbl_Humidness.Size = new Size(37, 18);
+            lbl_Humidness.TabIndex = 1;
+            lbl_Humidness.Text = "60%";
+            // 
+            // uiLabel4
+            // 
+            uiLabel4.BackColor = Color.Transparent;
+            uiLabel4.Font = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            uiLabel4.ForeColor = Color.FromArgb(48, 48, 48);
+            uiLabel4.Image = Properties.Resources.温度;
+            uiLabel4.ImageAlign = ContentAlignment.MiddleLeft;
+            uiLabel4.Location = new Point(845, 1);
+            uiLabel4.Name = "uiLabel4";
+            uiLabel4.Size = new Size(84, 32);
+            uiLabel4.TabIndex = 1;
+            uiLabel4.Text = "厂房温度";
+            uiLabel4.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lbl_Temperature
+            // 
+            lbl_Temperature.BackColor = Color.Transparent;
+            lbl_Temperature.Font = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Temperature.ForeColor = Color.Green;
+            lbl_Temperature.Location = new Point(931, 10);
+            lbl_Temperature.Name = "lbl_Temperature";
+            lbl_Temperature.Size = new Size(51, 21);
+            lbl_Temperature.TabIndex = 1;
+            lbl_Temperature.Text = "25℃";
+            // 
+            // lbl_Time
+            // 
+            lbl_Time.BackColor = Color.Transparent;
+            lbl_Time.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Time.ForeColor = Color.FromArgb(48, 48, 48);
+            lbl_Time.Location = new Point(881, 29);
+            lbl_Time.Name = "lbl_Time";
+            lbl_Time.Size = new Size(199, 23);
+            lbl_Time.TabIndex = 1;
+            lbl_Time.Text = "2024-10-12 23:05:23";
             // 
             // lbl_User
             // 
@@ -200,88 +285,6 @@
             pictureBox1.Size = new Size(46, 48);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            // 
-            // uiLabel4
-            // 
-            uiLabel4.BackColor = Color.Transparent;
-            uiLabel4.Font = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            uiLabel4.ForeColor = Color.FromArgb(48, 48, 48);
-            uiLabel4.Image = Properties.Resources.温度;
-            uiLabel4.ImageAlign = ContentAlignment.MiddleLeft;
-            uiLabel4.Location = new Point(845, 1);
-            uiLabel4.Name = "uiLabel4";
-            uiLabel4.Size = new Size(84, 32);
-            uiLabel4.TabIndex = 1;
-            uiLabel4.Text = "厂房温度";
-            uiLabel4.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // lbl_Temperature
-            // 
-            lbl_Temperature.BackColor = Color.Transparent;
-            lbl_Temperature.Font = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_Temperature.ForeColor = Color.Green;
-            lbl_Temperature.Location = new Point(931, 10);
-            lbl_Temperature.Name = "lbl_Temperature";
-            lbl_Temperature.Size = new Size(51, 21);
-            lbl_Temperature.TabIndex = 1;
-            lbl_Temperature.Text = "25℃";
-            // 
-            // lbl_Humidness
-            // 
-            lbl_Humidness.BackColor = Color.Transparent;
-            lbl_Humidness.Font = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_Humidness.ForeColor = Color.Green;
-            lbl_Humidness.Location = new Point(1060, 10);
-            lbl_Humidness.Name = "lbl_Humidness";
-            lbl_Humidness.Size = new Size(37, 18);
-            lbl_Humidness.TabIndex = 1;
-            lbl_Humidness.Text = "60%";
-            // 
-            // uiLabel6
-            // 
-            uiLabel6.BackColor = Color.Transparent;
-            uiLabel6.Font = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            uiLabel6.ForeColor = Color.FromArgb(48, 48, 48);
-            uiLabel6.Image = Properties.Resources.湿度;
-            uiLabel6.ImageAlign = ContentAlignment.MiddleLeft;
-            uiLabel6.Location = new Point(970, 1);
-            uiLabel6.Name = "uiLabel6";
-            uiLabel6.Size = new Size(84, 32);
-            uiLabel6.TabIndex = 1;
-            uiLabel6.Text = "厂房湿度";
-            uiLabel6.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // lbl_Time
-            // 
-            lbl_Time.BackColor = Color.Transparent;
-            lbl_Time.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_Time.ForeColor = Color.FromArgb(48, 48, 48);
-            lbl_Time.Location = new Point(881, 29);
-            lbl_Time.Name = "lbl_Time";
-            lbl_Time.Size = new Size(199, 23);
-            lbl_Time.TabIndex = 1;
-            lbl_Time.Text = "2024-10-12 23:05:23";
-            // lbl_Min
-            // 
-            lbl_Min.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_Min.Location = new Point(1164, 14);
-            lbl_Min.MinimumSize = new Size(1, 1);
-            lbl_Min.Name = "lbl_Min";
-            lbl_Min.Size = new Size(46, 35);
-            lbl_Min.Symbol = 61544;
-            lbl_Min.SymbolSize = 45;
-            lbl_Min.TabIndex = 3;
-            // 
-            // lbl_Exit
-            // 
-            lbl_Exit.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_Exit.Location = new Point(1216, 10);
-            lbl_Exit.MinimumSize = new Size(1, 1);
-            lbl_Exit.Name = "lbl_Exit";
-            lbl_Exit.Size = new Size(46, 35);
-            lbl_Exit.Symbol = 61453;
-            lbl_Exit.SymbolSize = 45;
-            lbl_Exit.TabIndex = 3;
             // 
             // uiLabel1
             // 
@@ -404,7 +407,7 @@
             // led_ProducteState
             // 
             led_ProducteState.BackColor = Color.Transparent;
-            led_ProducteState.Location = new Point(1042, 71);
+            led_ProducteState.Location = new Point(1048, 71);
             led_ProducteState.Name = "led_ProducteState";
             led_ProducteState.Size = new Size(32, 32);
             led_ProducteState.TabIndex = 3;
