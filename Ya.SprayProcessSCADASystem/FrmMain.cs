@@ -16,12 +16,23 @@ namespace Ya.SprayProcessSCADASystem
         public FrmMain()
         {
             InitializeComponent();
-
+            Init();
             //Globals.IniFile.Write("PLC参数", "变量表地址", Application.StartupPath + "\\PLC_Var_Config.xlsx");
+
+        }
+
+        public override void Init()
+        {
             InitConfig();
             InitAsideUI();
             InitHeaderUI();
             InitPlcClient();
+            this.FormClosed += FrmMain_FormClosed;
+        }
+
+        private void FrmMain_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            Globals.SiemensClient.Close();
         }
 
         private bool plcIsConnected = false; // plc是否连接
@@ -81,57 +92,66 @@ namespace Ya.SprayProcessSCADASystem
                 // 初始化plc变量读取 名称-值
                 Globals.DataDic.Add(plcVarList[i].名称, "NA");
             }
-            Task.Run(async () =>
+            try
             {
-                while (!cts.IsCancellationRequested)
+                Task.Run(async () =>
                 {
-                    if (plcIsConnected)
+                    while (!cts.IsCancellationRequested)
                     {
-                        //批量读取
-                        var readResult = Globals.SiemensClient.BatchRead(Globals.ReadDic);
-                        if (readResult.IsSucceed)
+                        if (plcIsConnected)
                         {
-                            for (int i = 0; i < plcVarList.Count; i++)
+                            //批量读取
+                            var readResult = Globals.SiemensClient.BatchRead(Globals.ReadDic);
+                            if (readResult.IsSucceed)
                             {
-                                Globals.DataDic[plcVarList[i].名称] = readResult.Value[plcVarList[i].PLC地址];
+                                for (int i = 0; i < plcVarList.Count; i++)
+                                {
+                                    Globals.DataDic[plcVarList[i].名称] = readResult.Value[plcVarList[i].PLC地址];
+                                }
                             }
+                            else
+                            {
+                                Globals.SiemensClient.Close();
+                                plcIsConnected = false;
+                                this.Invoke(() =>
+                                {
+                                    this.led_PlcState.On = false;
+                                });
+                            }
+                            await Task.Delay(Globals.ReadTimeInterval);
                         }
                         else
                         {
-                            Globals.SiemensClient.Close();
-                            plcIsConnected = false;
-                            this.Invoke(() =>
+                            // 重新连接
+                            var reConnectResult = Globals.SiemensClient.Open();
+                            if (reConnectResult.IsSucceed)
                             {
-                                this.led_PlcState.On = false;
-                            });
-                        }
-                        await Task.Delay(Globals.ReadTimeInterval);
-                    }
-                    else
-                    {
-                        // 重新连接
-                        var reConnectResult = Globals.SiemensClient.Open();
-                        if (reConnectResult.IsSucceed)
-                        {
-                            plcIsConnected = true;
-                            this.Invoke(() =>
+                                plcIsConnected = true;
+                                this.Invoke(() =>
+                                {
+                                    this.led_PlcState.On = true;
+                                });
+                            }
+                            else
                             {
-                                this.led_PlcState.On = true;
-                            });
+                                plcIsConnected = false;
+                                this.Invoke(() =>
+                                {
+                                    this.led_PlcState.On = false;
+                                });
+                            }
+                            await Task.Delay(Globals.ReConnectTimeInterval);
                         }
-                        else
-                        {
-                            plcIsConnected = false;
-                            this.Invoke(() =>
-                            {
-                                this.led_PlcState.On = false;
-                            });
-                        }
-                        await Task.Delay(Globals.ReConnectTimeInterval);
-                    }
 
-                }
-            });
+                    }
+                });
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
         }
 
 
@@ -233,6 +253,34 @@ namespace Ya.SprayProcessSCADASystem
                 default:
 
                     break;
+            }
+        }
+
+        private void lbl_Min_Click(object sender, EventArgs e)
+        {
+            // 最小化
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void lbl_Exit_Click(object sender, EventArgs e)
+        {
+            // 关闭
+            this.Close();
+        }
+
+        // 移动窗体
+        private Point mPoint;
+
+        private void Panel_MouseDown(object sender, MouseEventArgs e)
+        {
+            mPoint = new Point(e.X, e.Y);
+        }
+
+        private void Panel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
             }
         }
     }

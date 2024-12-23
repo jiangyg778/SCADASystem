@@ -139,6 +139,8 @@
             uiPanel1.TabIndex = 0;
             uiPanel1.Text = null;
             uiPanel1.TextAlignment = ContentAlignment.MiddleCenter;
+            uiPanel1.MouseDown += Panel_MouseDown;
+            uiPanel1.MouseMove += Panel_MouseMove;
             // 
             // lbl_Exit
             // 
@@ -150,6 +152,7 @@
             lbl_Exit.Symbol = 61453;
             lbl_Exit.SymbolSize = 45;
             lbl_Exit.TabIndex = 3;
+            lbl_Exit.Click += lbl_Exit_Click;
             // 
             // lbl_Min
             // 
@@ -161,6 +164,7 @@
             lbl_Min.Symbol = 61544;
             lbl_Min.SymbolSize = 45;
             lbl_Min.TabIndex = 3;
+            lbl_Min.Click += lbl_Min_Click;
             // 
             // st_AlarmInfo
             // 
@@ -239,7 +243,7 @@
             lbl_Time.BackColor = Color.Transparent;
             lbl_Time.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_Time.ForeColor = Color.FromArgb(48, 48, 48);
-            lbl_Time.Location = new Point(881, 29);
+            lbl_Time.Location = new Point(877, 33);
             lbl_Time.Name = "lbl_Time";
             lbl_Time.Size = new Size(199, 23);
             lbl_Time.TabIndex = 1;
@@ -579,6 +583,8 @@
             AllowShowTitle = false;
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(1280, 720);
+            CloseAskString = "是否关闭系统";
+            EscClose = true;
             Name = "FrmMain";
             Padding = new Padding(0);
             ShowTitle = false;
