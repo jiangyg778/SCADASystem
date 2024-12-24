@@ -46,10 +46,26 @@ namespace Ya.SprayProcessSCADASystem
         public static Dictionary<string, DataTypeEnum> ReadDic = new Dictionary<string, DataTypeEnum>();
 
         // plc变量值 读取的字典
-        public static Dictionary<string,object> DataDic= new Dictionary<string,object>();
+        public static Dictionary<string, object> DataDic = new Dictionary<string, object>();
 
         //plc变量值 写入的字典
         public static Dictionary<string, object> WriteDic = new Dictionary<string, object>();
+
+        public static bool PlcWrite(string varName, dynamic value)
+        {
+            if (SiemensClient != null && SiemensClient.Connected)
+            {
+                string address = (string)WriteDic[varName];
+                var res = SiemensClient.Write(address, value);
+
+                if (res.IsSucceed)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
 
     }
 }

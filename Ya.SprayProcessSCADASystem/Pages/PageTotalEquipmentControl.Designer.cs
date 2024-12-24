@@ -35,14 +35,14 @@
             btn_Stop = new Sunny.UI.UISymbolButton();
             btn_Start = new Sunny.UI.UISymbolButton();
             uiTitlePanel2 = new Sunny.UI.UITitlePanel();
-            device_TZ = new UserDeviceUnitControl();
-            device_CX = new UserDeviceUnitControl();
-            device_TH = new UserDeviceUnitControl();
-            device_JX = new UserDeviceUnitControl();
-            device_SFL = new UserDeviceUnitControl();
-            device_LQS = new UserDeviceUnitControl();
-            device_GHL = new UserDeviceUnitControl();
             device_SSJ = new UserDeviceUnitControl();
+            device_JX = new UserDeviceUnitControl();
+            device_GHL = new UserDeviceUnitControl();
+            device_TH = new UserDeviceUnitControl();
+            device_LQS = new UserDeviceUnitControl();
+            device_CX = new UserDeviceUnitControl();
+            device_SFL = new UserDeviceUnitControl();
+            device_TZ = new UserDeviceUnitControl();
             uiTitlePanel3 = new Sunny.UI.UITitlePanel();
             txt_Log = new Sunny.UI.UITextBox();
             uiTitlePanel1.SuspendLayout();
@@ -100,7 +100,7 @@
             btn_AlarmReset.TabIndex = 0;
             btn_AlarmReset.TagString = "报警复位";
             btn_AlarmReset.Text = "报警复位";
-            btn_AlarmReset.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_AlarmReset.Click += btn_Control_common_Click;
             // 
             // btn_MachineReset
             // 
@@ -115,7 +115,7 @@
             btn_MachineReset.TabIndex = 0;
             btn_MachineReset.TagString = "机械复位";
             btn_MachineReset.Text = "机械复位";
-            btn_MachineReset.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_MachineReset.Click += btn_Control_common_Click;
             // 
             // btn_Stop
             // 
@@ -130,7 +130,7 @@
             btn_Stop.TabIndex = 0;
             btn_Stop.TagString = "总停止";
             btn_Stop.Text = "总停止";
-            btn_Stop.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_Stop.Click += btn_Control_common_Click;
             // 
             // btn_Start
             // 
@@ -143,7 +143,10 @@
             btn_Start.Symbol = 561649;
             btn_Start.SymbolSize = 55;
             btn_Start.TabIndex = 0;
+            btn_Start.TagString = "总启动";
             btn_Start.Text = "总启动";
+            btn_Start.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_Start.Click += btn_Control_common_Click;
             // 
             // uiTitlePanel2
             // 
@@ -166,53 +169,21 @@
             uiTitlePanel2.Text = "产线总控制";
             uiTitlePanel2.TextAlignment = ContentAlignment.MiddleCenter;
             // 
-            // device_TZ
+            // device_SSJ
             // 
-            device_TZ.CloseVariableName = "脱脂工位关";
-            device_TZ.EquimentUnitName = "脱脂工位";
-            device_TZ.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            device_TZ.Location = new Point(29, 49);
-            device_TZ.MinimumSize = new Size(1, 1);
-            device_TZ.Name = "device_TZ";
-            device_TZ.OpenVariableName = "脱脂工位开";
-            device_TZ.RectColor = Color.Transparent;
-            device_TZ.Size = new Size(250, 60);
-            device_TZ.State = false;
-            device_TZ.TabIndex = 0;
-            device_TZ.Text = "userDeviceUnitControl1";
-            device_TZ.TextAlignment = ContentAlignment.MiddleCenter;
-            // 
-            // device_CX
-            // 
-            device_CX.CloseVariableName = "粗洗工位关";
-            device_CX.EquimentUnitName = "粗洗工位";
-            device_CX.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            device_CX.Location = new Point(29, 131);
-            device_CX.MinimumSize = new Size(1, 1);
-            device_CX.Name = "device_CX";
-            device_CX.OpenVariableName = "粗洗工位开";
-            device_CX.RectColor = Color.Transparent;
-            device_CX.Size = new Size(250, 60);
-            device_CX.State = false;
-            device_CX.TabIndex = 1;
-            device_CX.Text = "userDeviceUnitControl2";
-            device_CX.TextAlignment = ContentAlignment.MiddleCenter;
-            // 
-            // device_TH
-            // 
-            device_TH.CloseVariableName = "陶化工位开";
-            device_TH.EquimentUnitName = "陶化工位";
-            device_TH.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            device_TH.Location = new Point(29, 213);
-            device_TH.MinimumSize = new Size(1, 1);
-            device_TH.Name = "device_TH";
-            device_TH.OpenVariableName = "陶化工位关";
-            device_TH.RectColor = Color.Transparent;
-            device_TH.Size = new Size(250, 60);
-            device_TH.State = false;
-            device_TH.TabIndex = 2;
-            device_TH.Text = "userDeviceUnitControl3";
-            device_TH.TextAlignment = ContentAlignment.MiddleCenter;
+            device_SSJ.CloseVariableName = "输送机工位关";
+            device_SSJ.EquimentUnitName = "输送机工位";
+            device_SSJ.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            device_SSJ.Location = new Point(306, 295);
+            device_SSJ.MinimumSize = new Size(1, 1);
+            device_SSJ.Name = "device_SSJ";
+            device_SSJ.OpenVariableName = "输送机工位开";
+            device_SSJ.RectColor = Color.Transparent;
+            device_SSJ.Size = new Size(250, 60);
+            device_SSJ.State = false;
+            device_SSJ.TabIndex = 3;
+            device_SSJ.Text = "userDeviceUnitControl4";
+            device_SSJ.TextAlignment = ContentAlignment.MiddleCenter;
             // 
             // device_JX
             // 
@@ -230,21 +201,37 @@
             device_JX.Text = "userDeviceUnitControl4";
             device_JX.TextAlignment = ContentAlignment.MiddleCenter;
             // 
-            // device_SFL
+            // device_GHL
             // 
-            device_SFL.CloseVariableName = "水分炉工位开";
-            device_SFL.EquimentUnitName = "水分炉工位";
-            device_SFL.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            device_SFL.Location = new Point(306, 49);
-            device_SFL.MinimumSize = new Size(1, 1);
-            device_SFL.Name = "device_SFL";
-            device_SFL.OpenVariableName = "水分炉工位关";
-            device_SFL.RectColor = Color.Transparent;
-            device_SFL.Size = new Size(250, 60);
-            device_SFL.State = false;
-            device_SFL.TabIndex = 0;
-            device_SFL.Text = "userDeviceUnitControl1";
-            device_SFL.TextAlignment = ContentAlignment.MiddleCenter;
+            device_GHL.CloseVariableName = "固化炉工位开";
+            device_GHL.EquimentUnitName = "固化炉工位";
+            device_GHL.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            device_GHL.Location = new Point(306, 213);
+            device_GHL.MinimumSize = new Size(1, 1);
+            device_GHL.Name = "device_GHL";
+            device_GHL.OpenVariableName = "固化炉工位关";
+            device_GHL.RectColor = Color.Transparent;
+            device_GHL.Size = new Size(250, 60);
+            device_GHL.State = false;
+            device_GHL.TabIndex = 2;
+            device_GHL.Text = "userDeviceUnitControl3";
+            device_GHL.TextAlignment = ContentAlignment.MiddleCenter;
+            // 
+            // device_TH
+            // 
+            device_TH.CloseVariableName = "陶化工位开";
+            device_TH.EquimentUnitName = "陶化工位";
+            device_TH.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            device_TH.Location = new Point(29, 213);
+            device_TH.MinimumSize = new Size(1, 1);
+            device_TH.Name = "device_TH";
+            device_TH.OpenVariableName = "陶化工位关";
+            device_TH.RectColor = Color.Transparent;
+            device_TH.Size = new Size(250, 60);
+            device_TH.State = false;
+            device_TH.TabIndex = 2;
+            device_TH.Text = "userDeviceUnitControl3";
+            device_TH.TextAlignment = ContentAlignment.MiddleCenter;
             // 
             // device_LQS
             // 
@@ -262,37 +249,53 @@
             device_LQS.Text = "userDeviceUnitControl2";
             device_LQS.TextAlignment = ContentAlignment.MiddleCenter;
             // 
-            // device_GHL
+            // device_CX
             // 
-            device_GHL.CloseVariableName = "固化炉工位开";
-            device_GHL.EquimentUnitName = "固化炉工位";
-            device_GHL.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            device_GHL.Location = new Point(306, 213);
-            device_GHL.MinimumSize = new Size(1, 1);
-            device_GHL.Name = "device_GHL";
-            device_GHL.OpenVariableName = "固化炉工位关";
-            device_GHL.RectColor = Color.Transparent;
-            device_GHL.Size = new Size(250, 60);
-            device_GHL.State = false;
-            device_GHL.TabIndex = 2;
-            device_GHL.Text = "userDeviceUnitControl3";
-            device_GHL.TextAlignment = ContentAlignment.MiddleCenter;
+            device_CX.CloseVariableName = "粗洗工位关";
+            device_CX.EquimentUnitName = "粗洗工位";
+            device_CX.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            device_CX.Location = new Point(29, 131);
+            device_CX.MinimumSize = new Size(1, 1);
+            device_CX.Name = "device_CX";
+            device_CX.OpenVariableName = "粗洗工位开";
+            device_CX.RectColor = Color.Transparent;
+            device_CX.Size = new Size(250, 60);
+            device_CX.State = false;
+            device_CX.TabIndex = 1;
+            device_CX.Text = "userDeviceUnitControl2";
+            device_CX.TextAlignment = ContentAlignment.MiddleCenter;
             // 
-            // device_SSJ
+            // device_SFL
             // 
-            device_SSJ.CloseVariableName = "输送机工位关";
-            device_SSJ.EquimentUnitName = "输送机工位";
-            device_SSJ.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            device_SSJ.Location = new Point(306, 295);
-            device_SSJ.MinimumSize = new Size(1, 1);
-            device_SSJ.Name = "device_SSJ";
-            device_SSJ.OpenVariableName = "输送机工位开";
-            device_SSJ.RectColor = Color.Transparent;
-            device_SSJ.Size = new Size(250, 60);
-            device_SSJ.State = false;
-            device_SSJ.TabIndex = 3;
-            device_SSJ.Text = "userDeviceUnitControl4";
-            device_SSJ.TextAlignment = ContentAlignment.MiddleCenter;
+            device_SFL.CloseVariableName = "水分炉工位开";
+            device_SFL.EquimentUnitName = "水分炉工位";
+            device_SFL.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            device_SFL.Location = new Point(306, 49);
+            device_SFL.MinimumSize = new Size(1, 1);
+            device_SFL.Name = "device_SFL";
+            device_SFL.OpenVariableName = "水分炉工位关";
+            device_SFL.RectColor = Color.Transparent;
+            device_SFL.Size = new Size(250, 60);
+            device_SFL.State = false;
+            device_SFL.TabIndex = 0;
+            device_SFL.Text = "userDeviceUnitControl1";
+            device_SFL.TextAlignment = ContentAlignment.MiddleCenter;
+            // 
+            // device_TZ
+            // 
+            device_TZ.CloseVariableName = "脱脂工位关";
+            device_TZ.EquimentUnitName = "脱脂工位";
+            device_TZ.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            device_TZ.Location = new Point(29, 49);
+            device_TZ.MinimumSize = new Size(1, 1);
+            device_TZ.Name = "device_TZ";
+            device_TZ.OpenVariableName = "脱脂工位开";
+            device_TZ.RectColor = Color.Transparent;
+            device_TZ.Size = new Size(250, 60);
+            device_TZ.State = false;
+            device_TZ.TabIndex = 0;
+            device_TZ.Text = "userDeviceUnitControl1";
+            device_TZ.TextAlignment = ContentAlignment.MiddleCenter;
             // 
             // uiTitlePanel3
             // 
