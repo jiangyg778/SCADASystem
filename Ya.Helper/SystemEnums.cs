@@ -17,5 +17,13 @@ namespace Ya.Helper
             黑体,
             楷体
         }
+
+        public enum UserRole
+        {
+            管理员,
+            工程师,
+            操作员,
+            访客,
+        }
     }
 }

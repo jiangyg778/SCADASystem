@@ -184,6 +184,7 @@
             device_SSJ.TabIndex = 3;
             device_SSJ.Text = "userDeviceUnitControl4";
             device_SSJ.TextAlignment = ContentAlignment.MiddleCenter;
+            device_SSJ.ClickEvent += device_TZ_ClickEvent;
             // 
             // device_JX
             // 
@@ -200,6 +201,7 @@
             device_JX.TabIndex = 3;
             device_JX.Text = "userDeviceUnitControl4";
             device_JX.TextAlignment = ContentAlignment.MiddleCenter;
+            device_JX.ClickEvent += device_TZ_ClickEvent;
             // 
             // device_GHL
             // 
@@ -216,6 +218,7 @@
             device_GHL.TabIndex = 2;
             device_GHL.Text = "userDeviceUnitControl3";
             device_GHL.TextAlignment = ContentAlignment.MiddleCenter;
+            device_GHL.ClickEvent += device_TZ_ClickEvent;
             // 
             // device_TH
             // 
@@ -232,6 +235,7 @@
             device_TH.TabIndex = 2;
             device_TH.Text = "userDeviceUnitControl3";
             device_TH.TextAlignment = ContentAlignment.MiddleCenter;
+            device_TH.ClickEvent += device_TZ_ClickEvent;
             // 
             // device_LQS
             // 
@@ -248,6 +252,7 @@
             device_LQS.TabIndex = 1;
             device_LQS.Text = "userDeviceUnitControl2";
             device_LQS.TextAlignment = ContentAlignment.MiddleCenter;
+            device_LQS.ClickEvent += device_TZ_ClickEvent;
             // 
             // device_CX
             // 
@@ -264,6 +269,7 @@
             device_CX.TabIndex = 1;
             device_CX.Text = "userDeviceUnitControl2";
             device_CX.TextAlignment = ContentAlignment.MiddleCenter;
+            device_CX.ClickEvent += device_TZ_ClickEvent;
             // 
             // device_SFL
             // 
@@ -280,6 +286,7 @@
             device_SFL.TabIndex = 0;
             device_SFL.Text = "userDeviceUnitControl1";
             device_SFL.TextAlignment = ContentAlignment.MiddleCenter;
+            device_SFL.ClickEvent += device_TZ_ClickEvent;
             // 
             // device_TZ
             // 
@@ -296,6 +303,7 @@
             device_TZ.TabIndex = 0;
             device_TZ.Text = "userDeviceUnitControl1";
             device_TZ.TextAlignment = ContentAlignment.MiddleCenter;
+            device_TZ.ClickEvent += device_TZ_ClickEvent;
             // 
             // uiTitlePanel3
             // 
