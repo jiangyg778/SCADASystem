@@ -71,7 +71,6 @@
             // btn_DryRun
             // 
             btn_DryRun.BackColor = Color.Transparent;
-            btn_DryRun.ButtonName = "空运行";
             btn_DryRun.CounterButtonState = false;
             btn_DryRun.CounterButtonSymbol = 61452;
             btn_DryRun.FillColor = Color.Transparent;
@@ -85,7 +84,8 @@
             btn_DryRun.TabIndex = 1;
             btn_DryRun.Text = "userCounterButton1";
             btn_DryRun.TextAlignment = ContentAlignment.MiddleCenter;
-            btn_DryRun.VariableName = "";
+            btn_DryRun.VariableName = "空运行";
+            btn_DryRun.ClickEvent += btn_DryRun_ClickEvent;
             // 
             // btn_AlarmReset
             // 

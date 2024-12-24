@@ -13,29 +13,43 @@ namespace Ya.SprayProcessSCADASystem
 {
     public partial class UserCounterButton : UIUserControl
     {
-
         private UIStyle Style;
         private Color defaultFillColor;
         private Color defaultRectColor;
 
-        private string buttonName = "空运行";
-        [Browsable(true)] //属性暴露出来,可以在设计器中设置
-        [Category("自定义属性")] //属性分类-自定义属性
-        [Description("按钮名称")] //属性描述 非必须
-        public string ButtonName
+        public UserCounterButton()
         {
-            get { return buttonName; }
-            set
+            InitializeComponent();
+            this.Load += UserCounterButton_Load;
+        }
+
+        // 用户按钮加载事件
+        private void UserCounterButton_Load(object? sender, EventArgs e)
+        {
+            UIExtension.SetStyleManger = SetStyle; // 设置样式管理器
+                                                    //80, 160, 255
+            defaultFillColor = this.btn_Counter.FillColor;
+            defaultRectColor = this.btn_Counter.RectColor;
+        }
+
+        // 设置样式的方法
+        private void SetStyle(UIStyleManager manager)
+        {
+            this.btn_Counter.Style = manager.Style;
+            Style = manager.Style;
+            if (CounterButtonState)
             {
-                buttonName = value;
-                this.btn_Counter.Text = buttonName;
+                this.btn_Counter.FillColor = this.btn_Counter.FillPressColor;
+                this.btn_Counter.FillColor2 = this.btn_Counter.FillPressColor;
+                this.RectColor = this.btn_Counter.RectPressColor;
             }
         }
 
+        // 定义一个私有变量，用于存储按钮的符号
         private int counterButtonSymbol = 61452;
-        [Browsable(true)] //属性暴露出来,可以在设计器中设置
-        [Category("自定义属性")] //属性分类-自定义属性
-        [Description("按钮图标")] //属性描述 非必须
+        [Browsable(true)] // 使属性可以在属性窗口中编辑
+        [Category("自定义属性")] // 分类属性
+        [Description("取反按钮标签")] // 描述属性的用途
         public int CounterButtonSymbol
         {
             get { return counterButtonSymbol; }
@@ -46,20 +60,31 @@ namespace Ya.SprayProcessSCADASystem
             }
         }
 
+        private string variableName = "";
+        [Browsable(true)]
+        [Category("自定义属性")]
+        [Description("获取变量名称")]
+        public string VariableName
+        {
+            get { return variableName; }
+            set { variableName = value; }
+        }
+
         private bool counterButtonState;
-        [Browsable(true)] //属性暴露出来,可以在设计器中设置
-        [Category("自定义属性")] //属性分类-自定义属性
-        [Description("按钮状态")] //属性描述 非必须
+        [Browsable(true)]
+        [Category("自定义属性")]
+        [Description("取反按钮状态")]
         public bool CounterButtonState
         {
             get { return counterButtonState; }
             set
             {
                 counterButtonState = value;
-                if (counterButtonState)
+                if (counterButtonState == true)
                 {
-                    this.btn_Counter.FillColor = this.btn_Counter.FillPressColor; //按下时的颜色
-                    this.btn_Counter.RectColor = this.btn_Counter.RectPressColor; //按下时的边框颜色
+                    this.btn_Counter.FillColor = this.btn_Counter.FillPressColor;
+                    this.btn_Counter.FillColor2 = this.btn_Counter.FillPressColor;
+                    this.RectColor = this.btn_Counter.RectPressColor;
                 }
                 else
                 {
@@ -69,48 +94,22 @@ namespace Ya.SprayProcessSCADASystem
                     }
                     else
                     {
-                        this.btn_Counter.FillColor = defaultFillColor; //默认颜色
-                        this.btn_Counter.RectColor = defaultRectColor; //默认边框颜色
+                        this.btn_Counter.FillColor = defaultFillColor;
+                        this.btn_Counter.FillColor2 = defaultFillColor;
+                        this.btn_Counter.RectColor = defaultRectColor;
                     }
                 }
             }
         }
 
-        private string variableName = "";
-        [Browsable(true)] //属性暴露出来,可以在设计器中设置
-        [Category("自定义属性")] //属性分类-自定义属性
-        [Description("获取变量名称")] //属性描述 非必须
-        public string VariableName
-        {
-            get { return variableName = ""; }
-            set { variableName =  value; }
-        }
-
-
-        public UserCounterButton()
-        {
-            InitializeComponent();
-            this.Load += UserCounterButton_Load;
-        }
-
-        private void UserCounterButton_Load(object? sender, EventArgs e)
-        {
-            UIExtension.SetStyleManger = SetStyle;
-        }
-
-        private void SetStyle(UIStyleManager manager)
-        {
-            this.btn_Counter.Style = manager.Style;
-            Style = manager.Style;
-            defaultFillColor = this.btn_Counter.FillColor;
-            defaultRectColor = this.btn_Counter.RectColor;
-
-        }
-
-        public event EventHandler CounterButtonClick;
+        [Browsable(true)]
+        [Category("自定义事件")]
+        [Description("点击事件")]
+        public event EventHandler ClickEvent;
         private void btn_Counter_Click(object sender, EventArgs e)
         {
-            CounterButtonClick?.Invoke(this, e);
+            ClickEvent?.Invoke(this, e);
         }
+
     }
 }

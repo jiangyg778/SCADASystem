@@ -36,5 +36,23 @@ namespace Ya.SprayProcessSCADASystem
             {
                 UIMessageTip.ShowError($"写入{btn.TagString}失败");}
         }
+
+        private void btn_DryRun_ClickEvent(object sender, EventArgs e)
+        {
+            if (!Globals.SiemensClient.Connected)
+            {
+                UIMessageTip.ShowError("请先链接西门子PLC");
+                return;
+            }
+            if (Globals.PlcWrite(this.btn_DryRun.VariableName,!this.btn_DryRun.CounterButtonState))
+            {
+                this.btn_DryRun.CounterButtonState = !this.btn_DryRun.CounterButtonState;
+                UIMessageTip.ShowOk("写入成功");
+            }
+            else
+            {
+                UIMessageTip.ShowError($"写入失败");
+            }
+        }
     }
 }
