@@ -56,7 +56,7 @@ namespace Ya.SprayProcessSCADASystem
                 //刷新datagridview
                 await LoadData();
 
-              
+
             }
             else
             {
@@ -64,7 +64,7 @@ namespace Ya.SprayProcessSCADASystem
                 LogExtension.ShowMessage($"添加用户{this.txt_UserName.Text}失败", Microsoft.Extensions.Logging.LogLevel.Error);
             }
 
-          
+
         }
         private async Task LoadData()
         {
@@ -116,6 +116,68 @@ namespace Ya.SprayProcessSCADASystem
             this.txt_EnterPassword.Text = row.Cells["UserPassword"].Value.ToString();
             this.cb_Auth.SelectedItem = row.Cells["Role"].Value.ToString();
 
+        }
+
+        private async void btn_updata_ClickAsync(object sender, EventArgs e)
+        {
+            //验证
+            if (!VaildInput())
+            {
+                return;
+            }
+            UserUpdateDto userUpdateDto = new UserUpdateDto()
+            {
+                Id = int.Parse(this.dgv_User.CurrentRow.Cells["Id"].Value.ToString()),
+                UserName = this.txt_UserName.Text,
+                UserPassword = this.txt_Password.Text,
+                Role = this.cb_Auth.SelectedItem.ToString()
+            };
+            var result = _userManager.UpdateUserAsync(userUpdateDto);
+            if (result.Result.Status == SystemEnums.Result.Success)
+            {
+                UIMessageTip.ShowOk("修改成功");
+                LogExtension.ShowMessage($"修改用户{this.txt_UserName.Text}成功", Microsoft.Extensions.Logging.LogLevel.Information);
+                //刷新datagridview
+                await LoadData();
+            }
+            else
+            {
+                UIMessageTip.ShowError(result.Result.Msg);
+                LogExtension.ShowMessage($"修改用户{this.txt_UserName.Text}失败", Microsoft.Extensions.Logging.LogLevel.Error);
+            }
+        }
+
+        private async void btn_delete_ClickAsync(object sender, EventArgs e)
+        {
+            // 判断是否选中
+            if (this.dgv_User.CurrentRow == null)
+            {
+                UIMessageTip.ShowWarning("请选择要删除的用户");
+                return;
+            }
+            // 删除
+            var userUpdateDto = new UserDeleteDto()
+            {
+                Id = int.Parse(this.dgv_User.CurrentRow.Cells["Id"].Value.ToString())
+            };
+            var result = _userManager.DeleteUserAsync(userUpdateDto);
+            if (result.Result.Status == SystemEnums.Result.Success)
+            {
+                UIMessageTip.ShowOk("删除成功");
+                LogExtension.ShowMessage($"删除用户{this.txt_UserName.Text}成功", Microsoft.Extensions.Logging.LogLevel.Information);
+                //清除
+                this.txt_UserName.Text = "";
+                this.txt_Password.Text = "";
+                this.txt_EnterPassword.Text = "";
+                this.cb_Auth.SelectedIndex = -1;
+              //刷新datagridview
+                await LoadData();
+            }
+            else
+            {
+                UIMessageTip.ShowError(result.Result.Msg);
+                LogExtension.ShowMessage($"删除用户{this.txt_UserName.Text}失败", Microsoft.Extensions.Logging.LogLevel.Error);
+            }
         }
     }
 }

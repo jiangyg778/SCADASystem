@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
             uiLabel1 = new Sunny.UI.UILabel();
             txt_UserName = new Sunny.UI.UITextBox();
             uiLabel2 = new Sunny.UI.UILabel();
@@ -42,8 +42,8 @@
             uiLabel5 = new Sunny.UI.UILabel();
             cb_Auth = new Sunny.UI.UIComboBox();
             btn_AddUser = new Sunny.UI.UISymbolButton();
-            uiSymbolButton1 = new Sunny.UI.UISymbolButton();
-            uiSymbolButton2 = new Sunny.UI.UISymbolButton();
+            btn_updata = new Sunny.UI.UISymbolButton();
+            btn_delete = new Sunny.UI.UISymbolButton();
             dgv_User = new Sunny.UI.UIDataGridView();
             id = new DataGridViewTextBoxColumn();
             UserName = new DataGridViewTextBoxColumn();
@@ -164,74 +164,76 @@
             btn_AddUser.Text = "添加用户";
             btn_AddUser.Click += btn_AddUser_Click;
             // 
-            // uiSymbolButton1
+            // btn_updata
             // 
-            uiSymbolButton1.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            uiSymbolButton1.Location = new Point(23, 283);
-            uiSymbolButton1.MinimumSize = new Size(1, 1);
-            uiSymbolButton1.Name = "uiSymbolButton1";
-            uiSymbolButton1.Size = new Size(232, 45);
-            uiSymbolButton1.Symbol = 561285;
-            uiSymbolButton1.TabIndex = 3;
-            uiSymbolButton1.Text = "添加用户";
-            uiSymbolButton1.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_updata.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_updata.Location = new Point(23, 283);
+            btn_updata.MinimumSize = new Size(1, 1);
+            btn_updata.Name = "btn_updata";
+            btn_updata.Size = new Size(232, 45);
+            btn_updata.Symbol = 561285;
+            btn_updata.TabIndex = 3;
+            btn_updata.Text = "修改用户";
+            btn_updata.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_updata.Click += btn_updata_ClickAsync;
             // 
-            // uiSymbolButton2
+            // btn_delete
             // 
-            uiSymbolButton2.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            uiSymbolButton2.Location = new Point(23, 344);
-            uiSymbolButton2.MinimumSize = new Size(1, 1);
-            uiSymbolButton2.Name = "uiSymbolButton2";
-            uiSymbolButton2.Size = new Size(232, 45);
-            uiSymbolButton2.Symbol = 561285;
-            uiSymbolButton2.TabIndex = 3;
-            uiSymbolButton2.Text = "添加用户";
-            uiSymbolButton2.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_delete.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_delete.Location = new Point(23, 344);
+            btn_delete.MinimumSize = new Size(1, 1);
+            btn_delete.Name = "btn_delete";
+            btn_delete.Size = new Size(232, 45);
+            btn_delete.Symbol = 561285;
+            btn_delete.TabIndex = 3;
+            btn_delete.Text = "删除用户";
+            btn_delete.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_delete.Click += btn_delete_ClickAsync;
             // 
             // dgv_User
             // 
             dgv_User.AllowUserToAddRows = false;
             dgv_User.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(235, 243, 255);
-            dgv_User.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.BackColor = Color.FromArgb(235, 243, 255);
+            dgv_User.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
             dgv_User.BackgroundColor = Color.White;
             dgv_User.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(80, 160, 255);
-            dataGridViewCellStyle2.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgv_User.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = Color.FromArgb(80, 160, 255);
+            dataGridViewCellStyle12.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            dgv_User.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             dgv_User.ColumnHeadersHeight = 32;
             dgv_User.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgv_User.Columns.AddRange(new DataGridViewColumn[] { id, UserName, UserPassword, Role });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(48, 48, 48);
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgv_User.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = SystemColors.Window;
+            dataGridViewCellStyle13.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle13.ForeColor = Color.FromArgb(48, 48, 48);
+            dataGridViewCellStyle13.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.False;
+            dgv_User.DefaultCellStyle = dataGridViewCellStyle13;
             dgv_User.EnableHeadersVisualStyles = false;
             dgv_User.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dgv_User.GridColor = Color.FromArgb(80, 160, 255);
             dgv_User.Location = new Point(334, 14);
             dgv_User.Name = "dgv_User";
             dgv_User.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(235, 243, 255);
-            dataGridViewCellStyle4.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(48, 48, 48);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(80, 160, 255);
-            dataGridViewCellStyle4.SelectionForeColor = Color.White;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgv_User.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dgv_User.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = Color.FromArgb(235, 243, 255);
+            dataGridViewCellStyle14.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle14.ForeColor = Color.FromArgb(48, 48, 48);
+            dataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(80, 160, 255);
+            dataGridViewCellStyle14.SelectionForeColor = Color.White;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
+            dgv_User.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle15.BackColor = Color.White;
+            dataGridViewCellStyle15.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dgv_User.RowsDefaultCellStyle = dataGridViewCellStyle15;
             dgv_User.RowTemplate.Height = 25;
             dgv_User.SelectedIndex = -1;
             dgv_User.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -242,6 +244,7 @@
             // 
             // id
             // 
+            id.DataPropertyName = "Id";
             id.HeaderText = "id";
             id.Name = "id";
             id.ReadOnly = true;
@@ -276,8 +279,8 @@
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(1085, 549);
             Controls.Add(dgv_User);
-            Controls.Add(uiSymbolButton2);
-            Controls.Add(uiSymbolButton1);
+            Controls.Add(btn_delete);
+            Controls.Add(btn_updata);
             Controls.Add(btn_AddUser);
             Controls.Add(cb_Auth);
             Controls.Add(txt_EnterPassword);
@@ -307,8 +310,8 @@
         private Sunny.UI.UILabel uiLabel5;
         private Sunny.UI.UIComboBox cb_Auth;
         private Sunny.UI.UISymbolButton btn_AddUser;
-        private Sunny.UI.UISymbolButton uiSymbolButton1;
-        private Sunny.UI.UISymbolButton uiSymbolButton2;
+        private Sunny.UI.UISymbolButton btn_updata;
+        private Sunny.UI.UISymbolButton btn_delete;
         private Sunny.UI.UIDataGridView dgv_User;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn UserName;
