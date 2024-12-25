@@ -6,6 +6,8 @@ using Microsoft.Extensions.Logging;
 using MiniExcelLibs;
 using Sunny.UI;
 using System.IO.Pipelines;
+using System.Timers;
+using Ya.BLL;
 using Ya.Helper;
 using Ya.Model;
 using Ya.SprayProcessSCADASystem.Pages;
@@ -18,13 +20,34 @@ namespace Ya.SprayProcessSCADASystem
         private bool plcIsConnected = false; // plc是否连接
         private CancellationTokenSource cts = new CancellationTokenSource();
         private readonly ILogger<FrmMain> _logger;
+        private readonly UserManager _userManager;
+        private readonly AuthManager _authManager;
+        private System.Timers.Timer timer = new System.Timers.Timer();
 
-        public FrmMain(ILogger<FrmMain> logge)
+        private Dictionary<string, Control> pageControls = new Dictionary<string, Control>
+{
+    { "控制模块", Globals.ServiceProvider.GetRequiredService<PageTotalEquipmentControl>() },
+    { "用户模块", Globals.ServiceProvider.GetRequiredService<PageUserManage>() },
+    { "权限模块", Globals.ServiceProvider.GetRequiredService<PageAuthManage>() },
+    { "监控模块1", Globals.ServiceProvider.GetRequiredService<PageEquipmentMonitor3>() },
+    { "监控模块2", Globals.ServiceProvider.GetRequiredService<PageEquipmentMonitor1>() },
+    { "监控模块3", Globals.ServiceProvider.GetRequiredService<PageEquipmentMonitor2>() },
+    { "配方模块", Globals.ServiceProvider.GetRequiredService<PageRecipeManage>() },
+    { "日志模块", Globals.ServiceProvider.GetRequiredService<PageLogManage>() },
+    { "报表模块", Globals.ServiceProvider.GetRequiredService<PageReportManage>() },
+    { "图表模块", Globals.ServiceProvider.GetRequiredService<PageChartManage>() },
+    { "参数模块", Globals.ServiceProvider.GetRequiredService<PageSystemParameterSet>() }
+};
+
+        public FrmMain(ILogger<FrmMain> logge, UserManager userManager, AuthManager authManager)
         {
             this._logger = logge;
 
             InitializeComponent();
             Init();
+            _userManager = userManager;
+            _authManager = authManager;
+            this.lbl_User.Text = "访客";
             //Globals.IniFile.Write("PLC参数", "变量表地址", Application.StartupPath + "\\PLC_Var_Config.xlsx");
 
         }
@@ -36,6 +59,35 @@ namespace Ya.SprayProcessSCADASystem
             InitHeaderUI();
             InitPlcClient();
             this.FormClosed += FrmMain_FormClosed;
+            InitOther();
+        }
+
+        private void InitOther()
+        {
+            timer.Interval = 1000;
+            timer.Elapsed += Timer_Elapsed;
+            timer.Start();
+        }
+
+        private void Timer_Elapsed(object? sender, ElapsedEventArgs e)
+        {
+            if (plcIsConnected)
+            {
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(() =>
+                    {
+                        this.lbl_ProducteCount.Text = Globals.DataDic[this.lbl_ProducteCount.TagString].ToString();
+                        this.lbl_BadCount.Text = Globals.DataDic[this.lbl_BadCount.TagString].ToString();
+                        this.lbl_Temperature.Text = Globals.DataDic[this.lbl_Temperature.TagString].ToString() + "℃";
+                        this.lbl_Humidness.Text = Globals.DataDic[this.lbl_Humidness.TagString].ToString() + "%";
+                        this.lbl_ProducteCount.Text = Globals.DataDic[this.lbl_ProducteCount.TagString].ToString();
+                        this.lbl_Beat.Text = Globals.DataDic[this.lbl_Beat.TagString].ToString();
+                        this.lbl_TotalAlarm.Text = Globals.DataDic[this.lbl_TotalAlarm.TagString].ToString();
+                    });
+                }
+                
+            }
         }
 
         private void FrmMain_FormClosed(object? sender, FormClosedEventArgs e)
@@ -294,6 +346,97 @@ namespace Ya.SprayProcessSCADASystem
             {
                 this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            //把Aside折叠起来
+            Aside.CollapseAll();
+            Aside.SelectFirst();
+
+            var frmLogin = Globals.ServiceProvider.GetRequiredService<FrmLogin>();
+            frmLogin.ShowDialog();
+            if (frmLogin.IsLogin)
+            {
+                //更新登录用户
+                this.lbl_User.Text = frmLogin.UserName;
+                foreach (var control in pageControls.Values)
+                {
+                    control.Enabled = true;
+                }
+            }
+
+        }
+
+        private async void Aside_BeforeExpandAsync(object sender, TreeViewCancelEventArgs e) //异步展开
+        {
+            UINavMenu uINavMenu = sender as UINavMenu;
+
+            string moduleName = e.Node.Text; //模块名称
+
+            string user = this.lbl_User.Text;
+            var roleRes = await _userManager.GetUserAuthAsync(new QueryUserAuthDto() { UserName = user });
+
+            if (roleRes.Status == SystemEnums.Result.Success)
+            {
+                if (roleRes.Data[0].Role != "管理员")
+                {
+                    var authRes = await _authManager.GetAuthAsync(new QueryAuthDto { Role = roleRes.Data[0].Role });
+                    if (authRes.Status == SystemEnums.Result.Success)
+                    {
+                        UpdateControlAccess(moduleName, authRes.Data[0], pageControls);
+                    }
+                }
+            }
+        }
+
+        private void UpdateControlAccess(string moduleName, QueryAuthResultDto authDto, Dictionary<string, Control> pageControls)
+        {
+            switch (moduleName)
+            {
+                case "控制模块":
+                    pageControls["控制模块"].Enabled = authDto.ControlModule;
+                    break;
+
+                case "用户模块":
+                    pageControls["用户模块"].Enabled = false;
+                    pageControls["权限模块"].Enabled = false;
+                    break;
+
+                case "监控模块":
+                    pageControls["监控模块3"].Enabled = authDto.MonitorModule;
+                    pageControls["监控模块1"].Enabled = authDto.MonitorModule;
+                    pageControls["监控模块2"].Enabled = authDto.MonitorModule;
+                    break;
+
+                case "配方模块":
+                    pageControls["配方模块"].Enabled = authDto.RecipeModule;
+                    break;
+
+                case "日志模块":
+                    pageControls["日志模块"].Enabled = authDto.LogModule;
+                    break;
+
+                case "报表模块":
+                    pageControls["报表模块"].Enabled = authDto.ReportModule;
+                    break;
+
+                case "图表模块":
+                    pageControls["图表模块"].Enabled = authDto.ChartModule;
+                    break;
+
+                case "参数模块":
+                    pageControls["参数模块"].Enabled = authDto.ParamModule;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void uiLabel2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

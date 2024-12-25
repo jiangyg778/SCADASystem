@@ -94,6 +94,7 @@
             // 
             Aside.Location = new Point(0, 115);
             Aside.Size = new Size(195, 605);
+            Aside.BeforeExpand += Aside_BeforeExpandAsync;
             // 
             // Header
             // 
@@ -258,7 +259,7 @@
             lbl_User.Name = "lbl_User";
             lbl_User.Size = new Size(87, 37);
             lbl_User.TabIndex = 1;
-            lbl_User.Text = "依然";
+            lbl_User.Text = "Fang";
             // 
             // lbl_Title
             // 
@@ -281,6 +282,7 @@
             pictureBox2.Size = new Size(49, 48);
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // pictureBox1
             // 
@@ -317,6 +319,7 @@
             lbl_ProducteCount.Name = "lbl_ProducteCount";
             lbl_ProducteCount.Size = new Size(107, 35);
             lbl_ProducteCount.TabIndex = 2;
+            lbl_ProducteCount.TagString = "生产计数";
             lbl_ProducteCount.Text = "5000";
             // 
             // uiLabel2
@@ -332,6 +335,7 @@
             uiLabel2.TabIndex = 1;
             uiLabel2.Text = "不良计数";
             uiLabel2.TextAlign = ContentAlignment.MiddleRight;
+            uiLabel2.Click += uiLabel2_Click;
             // 
             // lbl_BadCount
             // 
@@ -343,6 +347,7 @@
             lbl_BadCount.Name = "lbl_BadCount";
             lbl_BadCount.Size = new Size(93, 35);
             lbl_BadCount.TabIndex = 2;
+            lbl_BadCount.TagString = "不良计数";
             lbl_BadCount.Text = "5000";
             // 
             // uiLabel3
@@ -369,6 +374,7 @@
             lbl_Beat.Name = "lbl_Beat";
             lbl_Beat.Size = new Size(93, 35);
             lbl_Beat.TabIndex = 2;
+            lbl_Beat.TagString = "生产节拍";
             lbl_Beat.Text = "60 S";
             // 
             // uiLabel5
@@ -395,6 +401,7 @@
             lbl_TotalAlarm.Name = "lbl_TotalAlarm";
             lbl_TotalAlarm.Size = new Size(93, 35);
             lbl_TotalAlarm.TabIndex = 2;
+            lbl_TotalAlarm.TagString = "累计报警";
             lbl_TotalAlarm.Text = "5000";
             // 
             // uiLabel7

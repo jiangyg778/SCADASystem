@@ -67,5 +67,28 @@ namespace Ya.SprayProcessSCADASystem
             return false;
         }
 
+        // 获取页面所有的控件
+        // 获取指定页面的所有控件
+        public static List<Control> GetAllControls(UIPage page)
+        {
+            List<Control> allControls = new List<Control>();
+            CollectControls(page.Controls, allControls);
+            return allControls;
+        }
+
+        // 递归方法，用于收集控件
+        private static void CollectControls(Control.ControlCollection controls, List<Control> allControls)
+        {
+            foreach (Control control in controls)
+            {
+                allControls.Add(control); // 将当前控件添加到列表中
+                                          // 如果当前控件有子控件，则递归调用此方法
+                if (control.HasChildren)
+                {
+                    CollectControls(control.Controls, allControls);
+                }
+            }
+        }
+
     }
 }

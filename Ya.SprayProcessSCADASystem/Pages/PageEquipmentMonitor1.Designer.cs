@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             uiTitlePanel1 = new Sunny.UI.UITitlePanel();
             userVarCurrentValue2 = new UserVarCurrentValue();
             userVarCurrentValue1 = new UserVarCurrentValue();
@@ -46,6 +47,7 @@
             userAlarmState4 = new UserAlarmState();
             userAlarmState5 = new UserAlarmState();
             userDeviceState3 = new UserDeviceState();
+            timer1 = new System.Windows.Forms.Timer(components);
             uiTitlePanel1.SuspendLayout();
             uiTitlePanel2.SuspendLayout();
             uiTitlePanel3.SuspendLayout();
@@ -366,5 +368,6 @@
         private UserAlarmState userAlarmState5;
         private UserDeviceState userDeviceState3;
         private UserVarCurrentValue userVarCurrentValue5;
+        private System.Windows.Forms.Timer timer1;
     }
 }
