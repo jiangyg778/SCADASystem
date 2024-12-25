@@ -112,7 +112,7 @@
             btn_UpdateEngAuth.Size = new Size(200, 91);
             btn_UpdateEngAuth.TabIndex = 1;
             btn_UpdateEngAuth.Text = "修改工程师权限";
-            btn_UpdateEngAuth.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_UpdateEngAuth.Click += btn_UpdateEngAuth_Click;
             // 
             // btn_UpdateOpAuth
             // 
@@ -123,6 +123,8 @@
             btn_UpdateOpAuth.Size = new Size(200, 91);
             btn_UpdateOpAuth.TabIndex = 1;
             btn_UpdateOpAuth.Text = "修改操作员权限";
+            btn_UpdateOpAuth.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_UpdateOpAuth.Click += btn_UpdateOpAuth_Click;
             // 
             // btn_UpdateVisitorAuth
             // 
@@ -133,6 +135,8 @@
             btn_UpdateVisitorAuth.Size = new Size(200, 91);
             btn_UpdateVisitorAuth.TabIndex = 1;
             btn_UpdateVisitorAuth.Text = "修改访客权限";
+            btn_UpdateVisitorAuth.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_UpdateVisitorAuth.Click += btn_UpdateVisitorAuth_Click;
             // 
             // PageAuthManage
             // 
