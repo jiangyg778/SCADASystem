@@ -65,7 +65,6 @@ namespace Ya.SprayProcessSCADASystem
 
             DbType dbType = Enum.Parse<DbType>(configuration["DbContexts:DbType"]);
             string connectionString = configuration[$"DbContexts:{dbType}:ConnectionString"];
-            //3. ×¢ÈësqlSugar
             services.AddSqlSugarSetup(dbType, connectionString);
 
 
