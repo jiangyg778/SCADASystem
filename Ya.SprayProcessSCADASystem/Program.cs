@@ -7,6 +7,7 @@ using NLog.Extensions.Logging;
 using SqlSugar;
 using System.Data;
 using System.Reflection;
+using Ya.BLL;
 using Ya.DAL;
 using Ya.Model;
 using DbType = SqlSugar.DbType;
@@ -43,7 +44,11 @@ namespace Ya.SprayProcessSCADASystem
         private static void ConfigureService(ServiceCollection services)
         {
             ///1. 注册依赖注入 通过程序集的某一个类 自动注册程序集内的类 条件是 该类实现了 ISingletonDependency之类的 接口
-            services.AddDependencyInjection(new List<Assembly>() { typeof(Program).Assembly });
+            services.AddDependencyInjection(new List<Assembly>() { 
+                typeof(Program).Assembly ,
+                typeof(BaseDto).Assembly,
+                typeof(DB).Assembly,
+            });
 
             //注册json配置
             IConfigurationBuilder cfgBuilder = new ConfigurationBuilder()

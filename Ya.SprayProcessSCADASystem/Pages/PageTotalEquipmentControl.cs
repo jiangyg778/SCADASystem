@@ -23,6 +23,7 @@ namespace Ya.SprayProcessSCADASystem
         {
             InitializeComponent();
             _logger = logger;
+            LogExtension.ShowMessage = ShowLog;
         }
 
         private void btn_Control_common_Click(object sender, EventArgs e)

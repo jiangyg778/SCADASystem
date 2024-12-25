@@ -73,9 +73,8 @@
             txt_UserName.ShowText = false;
             txt_UserName.Size = new Size(150, 29);
             txt_UserName.TabIndex = 1;
-            txt_UserName.Text = "用户名称";
             txt_UserName.TextAlignment = ContentAlignment.MiddleLeft;
-            txt_UserName.Watermark = "";
+            txt_UserName.Watermark = "用户名称";
             // 
             // uiLabel2
             // 
@@ -98,9 +97,8 @@
             txt_Password.ShowText = false;
             txt_Password.Size = new Size(150, 29);
             txt_Password.TabIndex = 1;
-            txt_Password.Text = "用户密码";
             txt_Password.TextAlignment = ContentAlignment.MiddleLeft;
-            txt_Password.Watermark = "";
+            txt_Password.Watermark = "用户密码";
             // 
             // uilabel4
             // 
@@ -123,9 +121,8 @@
             txt_EnterPassword.ShowText = false;
             txt_EnterPassword.Size = new Size(150, 29);
             txt_EnterPassword.TabIndex = 1;
-            txt_EnterPassword.Text = "确认密码";
             txt_EnterPassword.TextAlignment = ContentAlignment.MiddleLeft;
-            txt_EnterPassword.Watermark = "";
+            txt_EnterPassword.Watermark = "确认密码";
             // 
             // uiLabel5
             // 
@@ -165,7 +162,7 @@
             btn_AddUser.Symbol = 561285;
             btn_AddUser.TabIndex = 3;
             btn_AddUser.Text = "添加用户";
-            btn_AddUser.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_AddUser.Click += btn_AddUser_Click;
             // 
             // uiSymbolButton1
             // 
@@ -177,6 +174,7 @@
             uiSymbolButton1.Symbol = 561285;
             uiSymbolButton1.TabIndex = 3;
             uiSymbolButton1.Text = "添加用户";
+            uiSymbolButton1.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
             // 
             // uiSymbolButton2
             // 
@@ -188,6 +186,7 @@
             uiSymbolButton2.Symbol = 561285;
             uiSymbolButton2.TabIndex = 3;
             uiSymbolButton2.Text = "添加用户";
+            uiSymbolButton2.TipsFont = new Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point);
             // 
             // dgv_User
             // 
@@ -239,6 +238,7 @@
             dgv_User.Size = new Size(645, 507);
             dgv_User.StripeOddColor = Color.FromArgb(235, 243, 255);
             dgv_User.TabIndex = 4;
+            dgv_User.SelectIndexChange += dgv_User_SelectIndexChange;
             // 
             // id
             // 
